@@ -1,0 +1,50 @@
+.App-main {
+  padding: 0 6.25rem;
+}
+
+.main__title {
+  margin-top: 3.75rem;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.main__title em {
+  color: #ff0000;
+  font-style: normal;
+}
+
+.main__subtitle {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.dashboard__grid {
+  display: grid;
+  gap: 1.875rem;
+  grid-template-areas:
+    'activity activity activity keydata'
+    'average performance score keydata';
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+}
+
+.activity__charts {
+  grid-area: activity;
+}
+
+.average-session__charts {
+  grid-area: average;
+}
+
+.performance__charts {
+  grid-area: performance;
+}
+
+.today-score__charts {
+  grid-area: score;
+}
+
+.key-data__charts {
+  grid-area: keydata;
+}
