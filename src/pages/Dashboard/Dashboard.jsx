@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import { getUserMainDataUrl } from '../../services/api'
 import useFetch from '../../hooks/useFetch'
 import KeyData from '../../components/KeyData/KeyData'
 import TodayScore from '../../components/TodayScore/TodayScore'
@@ -9,9 +10,9 @@ import Spinner from '../../components/Spinner/Spinner'
 import Error from '../../components/Error/Error'
 import './Dashboard.css'
 
-const Dashboard = () => {
+function Dashboard() {
   const { id } = useParams()
-  const [data, loading, error] = useFetch('./mockData/userMainData.json')
+  const [data, loading, error] = useFetch(getUserMainDataUrl(id))
 
   if (loading) {
     return <Spinner>Loading...</Spinner>
@@ -22,12 +23,10 @@ const Dashboard = () => {
   }
 
   const {
-    userInfos: { firstName, lastName, age },
+    userInfos: { firstName },
     todayScore,
     keyData,
   } = data
-
-  console.log('main data', data)
 
   return (
     <main className="App-main">
@@ -38,10 +37,12 @@ const Dashboard = () => {
         Félicitation ! Vous avez explosé vos objectifs hier 👏
       </p>
       <div className="dashboard__grid">
-        <Activity id={id} />
-        <AverageSession id={id} />
-        <Performance id={id} />
-        <TodayScore todayScore={todayScore} />
+        <div className="dashboard__charts">
+          <Activity id={id} />
+          <AverageSession id={id} />
+          <Performance id={id} />
+          <TodayScore todayScore={todayScore} />
+        </div>
         <KeyData keyData={keyData} />
       </div>
     </main>

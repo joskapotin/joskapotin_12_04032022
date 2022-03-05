@@ -1,9 +1,19 @@
+import PropTypes from 'prop-types'
 import './Spinner.css'
 
-export default function Spinner(props) {
+function Spinner({ children }) {
   return (
     <div className="overlay">
-      <div className="spinner">{props.children}</div>
+      <div className="spinner">{children}</div>
     </div>
   )
+}
+
+export default Spinner
+
+Spinner.defaultProps = {
+  children: '',
+}
+Spinner.propTypes = {
+  children: PropTypes.node,
 }

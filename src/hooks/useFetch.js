@@ -14,17 +14,17 @@ function useFetch(url) {
           const response = await fetch(url, { signal: abortController.signal })
           const result = await response.json()
           if (!response.ok) {
-            const error = (data && data.message) || response.status
-            return Promise.reject(error)
+            const fetchError = (data && data.message) || response.status
+            return Promise.reject(fetchError)
           }
           setData(result.data)
         } catch (err) {
-          console.error(err)
           setError(err)
         } finally {
           setLoading(false)
         }
-      }, 2000)
+        return null
+      }, 0)
     }
 
     if (data.length === 0) {

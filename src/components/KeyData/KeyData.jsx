@@ -1,3 +1,4 @@
+import { PropTypes } from 'prop-types'
 import { unitConversion } from '../../helpers/helpers'
 import KeyCard from '../KeyCard/KeyCard'
 import caloriesIcon from '../../assets/images/calories-icon.svg'
@@ -6,11 +7,10 @@ import fatIcon from '../../assets/images/fat-icon.svg'
 import proteinIcon from '../../assets/images/protein-icon.svg'
 import './KeyData.css'
 
-const KeyData = ({ keyData }) => {
+function KeyData({ keyData }) {
   const { calorieCount, proteinCount, carbohydrateCount, lipidCount } = keyData
-
   return (
-    <div className="key-data__charts">
+    <div className="key-data-charts">
       <KeyCard
         icon={caloriesIcon}
         text={`${unitConversion(calorieCount)}Cal`}
@@ -36,3 +36,21 @@ const KeyData = ({ keyData }) => {
 }
 
 export default KeyData
+
+KeyData.defaultProps = {
+  keyData: {
+    calorieCount: 0,
+    proteinCount: 0,
+    carbohydrateCount: 0,
+    lipidCount: 0,
+  },
+}
+
+KeyData.propTypes = {
+  keyData: PropTypes.shape({
+    calorieCount: PropTypes.number,
+    proteinCount: PropTypes.number,
+    carbohydrateCount: PropTypes.number,
+    lipidCount: PropTypes.number,
+  }),
+}

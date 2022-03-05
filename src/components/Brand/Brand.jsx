@@ -1,6 +1,6 @@
 import './Brand.css'
 
-const Brand = () => {
+function Brand() {
   return (
     <svg
       className="App-logo"

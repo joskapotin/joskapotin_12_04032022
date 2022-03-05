@@ -2,7 +2,7 @@ import Logo from '../Logo/Logo'
 import Brand from '../Brand/Brand'
 import './Header.css'
 
-const Header = () => {
+function Header() {
   return (
     <header className="App-header">
       <nav className="nav-primary" aria-label="primary">

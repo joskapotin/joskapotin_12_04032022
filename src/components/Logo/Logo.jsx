@@ -1,6 +1,6 @@
 import './Logo.css'
 
-const Logo = () => {
+function Logo() {
   const style = {
     maskType: 'alpha',
   }

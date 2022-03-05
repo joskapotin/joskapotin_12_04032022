@@ -1,0 +1,12 @@
+.average-session-charts__container {
+  overflow: hidden;
+  width: auto;
+  max-width: 260px;
+  aspect-ratio: 1/1;
+  background: red;
+  border-radius: 5px;
+}
+
+.average-session-charts {
+  background-color: #ff0000;
+}

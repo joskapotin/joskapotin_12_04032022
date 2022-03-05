@@ -1,5 +1,7 @@
 .App-main {
-  padding: 0 6.25rem;
+  max-width: 70.375rem;
+  padding: 0 0 5rem;
+  margin: 0 auto;
 }
 
 .main__title {
@@ -22,29 +24,30 @@
 .dashboard__grid {
   display: grid;
   gap: 1.875rem;
-  grid-template-areas:
-    'activity activity activity keydata'
-    'average performance score keydata';
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, auto);
+  grid-template-areas: 'dashboard-charts keydata';
 }
 
-.activity__charts {
-  grid-area: activity;
+.dashboard__charts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.875rem;
+  grid-area: dashboard-charts;
 }
 
-.average-session__charts {
-  grid-area: average;
+.activity-charts__container {
+  width: 100%;
 }
 
-.performance__charts {
-  grid-area: performance;
+.average-session-charts__container,
+.performance-charts__container,
+.today-score-charts__container {
+  flex-grow: 1;
 }
 
-.today-score__charts {
-  grid-area: score;
-}
-
-.key-data__charts {
+.key-data-charts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   grid-area: keydata;
 }

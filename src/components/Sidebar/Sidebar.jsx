@@ -1,6 +1,6 @@
 import './Sidebar.css'
 
-const Sidebar = () => {
+function Sidebar() {
   const year = new Date().getFullYear()
   return (
     <aside className="App-sidebar">
