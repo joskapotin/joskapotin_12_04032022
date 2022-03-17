@@ -1,7 +1,6 @@
 .performance-charts__container {
   overflow: hidden;
-  width: auto;
-  max-width: 260px;
+  width: 16.25rem;
   aspect-ratio: 1/1;
   background: #282d30;
   border-radius: 5px;

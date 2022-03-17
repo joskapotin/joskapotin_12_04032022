@@ -1,47 +1,33 @@
-import { RadialBar, RadialBarChart, ResponsiveContainer } from 'recharts'
 import PropTypes from 'prop-types'
+import CircularProgressBar from '../CircularProgressBar/CircularProgressBar'
 import './TodayScore.css'
 
 function TodayScore({ todayScore }) {
-  const chartData = [
-    {
-      name: 'today score',
-      value: todayScore,
-    },
-  ]
-  console.log(todayScore)
+  const percentage = todayScore * 100
+
   return (
     <div className="today-score-charts__container">
-      <h2 className="today-score-charts__title">Score {todayScore}</h2>
-      <ResponsiveContainer
-        className="today-score-charts"
-        width="100%"
-        height="100%"
-      >
-        <RadialBarChart
-          width={730}
-          height={250}
-          innerRadius="10%"
-          outerRadius="80%"
-          data={chartData}
-          startAngle={180}
-          endAngle={0}
-        >
-          <RadialBar
-            minAngle={15}
-            label={{ fill: '#666', position: 'insideStart' }}
-            background
-            clockWise
-            dataKey="value"
-          />
-        </RadialBarChart>
-      </ResponsiveContainer>
+      <h2 className="today-score-charts__title">Score</h2>
+      <div className="today-score-charts">
+        <CircularProgressBar
+          strokeWidth={10}
+          sqSize={160}
+          percentage={percentage}
+        />
+      </div>
+      <p className="today-score-charts__text">
+        <strong>{`${percentage}%`}</strong> de votre objectif
+      </p>
     </div>
   )
 }
 
 export default TodayScore
 
+TodayScore.defaultProps = {
+  todayScore: 0,
+}
+
 TodayScore.propTypes = {
-  todayScore: PropTypes.number.isRequired,
+  todayScore: PropTypes.number,
 }

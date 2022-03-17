@@ -1,9 +1,10 @@
 .today-score-charts__container {
   display: grid;
   overflow: hidden;
-  width: auto;
-  max-width: 260px;
+  width: 16.25rem;
+  padding: 1.5625rem;
   aspect-ratio: 1/1;
+  background-color: #fbfbfb;
   border-radius: 5px;
   grid-template-areas: 'score-stack';
 }
@@ -13,10 +14,32 @@
   font-size: 15px;
   font-style: normal;
   font-weight: 500;
+  grid-area: score-stack;
   line-height: 24px;
   pointer-events: none;
 }
 
 .today-score-charts {
+  align-self: center;
   grid-area: score-stack;
+  justify-self: center;
+}
+
+.today-score-charts__text {
+  align-self: center;
+  color: #74798c;
+  font-size: 16px;
+  font-weight: 500;
+  grid-area: score-stack;
+  justify-self: center;
+  line-height: 26px;
+  text-align: center;
+}
+
+.today-score-charts__text strong {
+  display: block;
+  color: #282d30;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 26px;
 }

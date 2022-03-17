@@ -1,8 +1,7 @@
 .average-session-charts__container {
   display: grid;
   overflow: hidden;
-  width: auto;
-  max-width: 260px;
+  width: 16.25rem;
   aspect-ratio: 1/1;
   background: red;
   border-radius: 5px;

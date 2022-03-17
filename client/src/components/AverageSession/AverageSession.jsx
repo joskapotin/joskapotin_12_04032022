@@ -42,7 +42,7 @@ function AverageSession({ id }) {
       </h2>
       <ResponsiveContainer
         className="average-session-charts"
-        width="100%"
+        width="99%"
         height="100%"
       >
         <LineChart

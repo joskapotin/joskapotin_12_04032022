@@ -34,7 +34,7 @@ function Performance({ id }) {
     <div className="performance-charts__container">
       <ResponsiveContainer
         className="performance-charts"
-        width="100%"
+        width="99%"
         height="100%"
       >
         <RadarChart

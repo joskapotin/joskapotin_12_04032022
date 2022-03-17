@@ -1,0 +1,13 @@
+.square-chart-container {
+  display: grid;
+  overflow: hidden;
+  width: auto;
+  max-width: 260px;
+  aspect-ratio: 1/1;
+  border-radius: 5px;
+  grid-template-areas: 'square-stack';
+}
+
+.square-chart-container > * {
+  grid-area: square-stack;
+}

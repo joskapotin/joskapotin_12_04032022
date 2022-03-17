@@ -1,5 +1,5 @@
 .App-main {
-  max-width: 70.375rem;
+  width: 90%;
   padding: 0 0 5rem;
   margin: 0 auto;
 }
@@ -39,15 +39,9 @@
   width: 100%;
 }
 
-.average-session-charts__container,
-.performance-charts__container,
-.today-score-charts__container {
-  flex-grow: 1;
-}
-
 .key-data-charts {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 2.5rem;
   grid-area: keydata;
 }
