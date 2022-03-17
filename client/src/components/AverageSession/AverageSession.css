@@ -1,12 +1,33 @@
 .average-session-charts__container {
+  display: grid;
   overflow: hidden;
   width: auto;
   max-width: 260px;
   aspect-ratio: 1/1;
   background: red;
   border-radius: 5px;
+  grid-template-areas: 'session-stack';
+}
+
+.average-session-charts__title {
+  z-index: 10;
+  margin: 1.875rem 4rem auto 1.875rem;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  grid-area: session-stack;
+  line-height: 24px;
+  pointer-events: none;
 }
 
 .average-session-charts {
   background-color: #ff0000;
+  grid-area: session-stack;
+}
+
+.average-session__tooltip {
+  padding: 0 0.4375rem;
+  background-color: #fff;
+  line-height: 24px;
 }

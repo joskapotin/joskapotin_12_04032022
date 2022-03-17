@@ -1,4 +1,11 @@
-import { XAxis, Tooltip, Line, LineChart, ResponsiveContainer } from 'recharts'
+import {
+  XAxis,
+  YAxis,
+  Tooltip,
+  Line,
+  LineChart,
+  ResponsiveContainer,
+} from 'recharts'
 import { PropTypes } from 'prop-types'
 import { getUserAverageSessionUrl } from '../../services/api'
 import useFetch from '../../hooks/useFetch'
@@ -17,12 +24,30 @@ function AverageSession({ id }) {
     return <Error error={error} />
   }
 
+  const customTooltip = ({ active, payload }) => {
+    if (active && payload && payload.length) {
+      return (
+        <div className="average-session__tooltip">
+          <span>{`${payload[0].value} min`}</span>
+        </div>
+      )
+    }
+    return null
+  }
+
   return (
     <div className="average-session-charts__container">
-      <ResponsiveContainer width="100%" height="100%">
+      <h2 className="average-session-charts__title">
+        Durée moyenne des sessions
+      </h2>
+      <ResponsiveContainer
+        className="average-session-charts"
+        width="100%"
+        height="100%"
+      >
         <LineChart
-          className="average-session-charts"
           data={data.sessions}
+          margin={{ top: 0, left: 0, right: 0, bottom: 20 }}
           onMouseMove={(e) => {
             if (e.isTooltipActive === true) {
               const div = document.querySelector('.average-session-charts')
@@ -38,22 +63,22 @@ function AverageSession({ id }) {
             dataKey="day"
             axisLine={false}
             tickLine={false}
-            padding={{ left: 10, right: 10 }}
-            tick={{ fill: '#FFF', opacity: 0.5 }}
-            tickSize={12}
+            tick={{ fill: '#FFF', opacity: 0.6 }}
             tickFormatter={(day) => {
               const weekday = ['L', 'M', 'M', 'J', 'V', 'S', 'D']
               return `${weekday[day - 1]}`
             }}
+            interval="preserveStartEnd"
           />
-          <Tooltip cursor={false} />
+          <YAxis domain={['dataMin - 20', 'dataMax + 20']} hide />
+          <Tooltip content={customTooltip} cursor={false} />
           <Line
             type="natural"
             dataKey="sessionLength"
             dot={false}
             activeDot={{ fill: '#FFF' }}
             strokeWidth={2}
-            stroke="#fff"
+            stroke="#ff9999"
           />
         </LineChart>
       </ResponsiveContainer>
