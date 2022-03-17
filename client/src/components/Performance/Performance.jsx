@@ -1,8 +1,8 @@
 import {
+  ResponsiveContainer,
   RadarChart,
   PolarGrid,
   PolarAngleAxis,
-  PolarRadiusAxis,
   Radar,
 } from 'recharts'
 import PropTypes from 'prop-types'
@@ -32,23 +32,25 @@ function Performance({ id }) {
 
   return (
     <div className="performance-charts__container">
-      <RadarChart
+      <ResponsiveContainer
         className="performance-charts"
-        width={258}
-        height={263}
-        outerRadius={90}
-        data={chartsFormatedData}
+        width="100%"
+        height="100%"
       >
-        <PolarGrid />
-        <PolarAngleAxis dataKey="kind" />
-        <PolarRadiusAxis angle={30} domain={[0, 150]} />
-        <Radar
-          dataKey="value"
-          stroke="#8884d8"
-          fill="#8884d8"
-          fillOpacity={0.6}
-        />
-      </RadarChart>
+        <RadarChart
+          data={chartsFormatedData}
+          margin={{ top: 0, right: 35, bottom: 0, left: 35 }}
+        >
+          <PolarGrid />
+          <Radar dataKey="value" fill="rgb(255, 1, 1)" fillOpacity={0.7} />
+          <PolarAngleAxis
+            dataKey="kind"
+            fontSize={12}
+            tickLine={false}
+            stroke="white"
+          />
+        </RadarChart>
+      </ResponsiveContainer>
     </div>
   )
 }
