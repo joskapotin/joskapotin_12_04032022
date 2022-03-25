@@ -12,8 +12,26 @@ import Spinner from '../Spinner/Spinner'
 import Error from '../Error/Error'
 import './Performance.css'
 
+/**
+ * Component that takes an id as a prop, fetches the user performance data from the API, and renders a radar chart with the data.
+ *
+ * @param {Object} props
+ * @param {Number} props.id - The id of the user we want the data for.
+ * @returns {JSX.Element} The performance charts component is returning a div with a title and a responsive radar chart.
+ */
 function Performance({ id }) {
   const [data, loading, error] = useFetch(getUserPerformanceUrl(id))
+
+  // Format the data to feed the chart
+  function formatData(dataToFormat) {
+    const { kind } = dataToFormat
+    const chartsFormatedData = data.data.map((item) => {
+      const newItem = { ...item }
+      newItem.kind = kind[item.kind]
+      return newItem
+    })
+    return chartsFormatedData
+  }
 
   if (loading) {
     return <Spinner>Loading...</Spinner>
@@ -23,13 +41,6 @@ function Performance({ id }) {
     return <Error error={error} />
   }
 
-  const { kind } = data
-  const chartsFormatedData = data.data.map((item) => {
-    const newItem = { ...item }
-    newItem.kind = kind[item.kind]
-    return newItem
-  })
-
   return (
     <div className="performance-charts__container">
       <ResponsiveContainer
@@ -38,7 +49,7 @@ function Performance({ id }) {
         height="100%"
       >
         <RadarChart
-          data={chartsFormatedData}
+          data={formatData(data)}
           margin={{ top: 0, right: 35, bottom: 0, left: 35 }}
         >
           <PolarGrid />

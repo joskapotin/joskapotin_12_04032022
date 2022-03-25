@@ -1,5 +1,18 @@
 import { useState, useEffect } from 'react'
 
+/**
+ * @typedef FetchState
+ * @type {Object}
+ * @property {Array.<Object>} data - the fetched data or an empty array
+ * @property {Boolean} loading - the loading status
+ * @property {Error} error - the error if any
+ */
+
+/**
+ * Hook that fetches data from a URL and returns the data, loading state, and error.
+ * @param {URL} url - The URL to fetch.
+ * @returns {FetchState} The data, loading state, and error.
+ */
 function useFetch(url) {
   const [data, setData] = useState([])
   const [loading, setLoading] = useState(true)

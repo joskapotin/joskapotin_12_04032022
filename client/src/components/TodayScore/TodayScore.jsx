@@ -2,6 +2,13 @@ import PropTypes from 'prop-types'
 import CircularProgressBar from '../CircularProgressBar/CircularProgressBar'
 import './TodayScore.css'
 
+/**
+ * It takes in a prop called todayScore and displays a circular progress bar with the percentage of the user goal
+ *
+ * @param {Object} props
+ * @param {number} props.todayScore - The id of the user we want the data for.
+ * @returns {JSX.Element} A div with a title, a circular progress bar and a text.
+ */
 function TodayScore({ todayScore }) {
   const percentage = todayScore * 100
 

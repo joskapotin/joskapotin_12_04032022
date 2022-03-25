@@ -22,16 +22,10 @@ function Dashboard() {
     return <Error error={error} />
   }
 
-  const {
-    userInfos: { firstName },
-    todayScore,
-    keyData,
-  } = data
-
   return (
     <main className="App-main">
       <h1 className="main__title">
-        Bonjour <em>{firstName}</em>
+        Bonjour <em>{data.userInfos.firstName}</em>
       </h1>
       <p className="main__subtitle">
         Félicitation ! Vous avez explosé vos objectifs hier 👏
@@ -41,9 +35,9 @@ function Dashboard() {
           <Activity id={id} />
           <AverageSession id={id} />
           <Performance id={id} />
-          <TodayScore todayScore={todayScore} />
+          <TodayScore todayScore={data.todayScore} />
         </div>
-        <KeyData keyData={keyData} />
+        <KeyData keyData={data.keyData} />
       </div>
     </main>
   )
