@@ -4,14 +4,12 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import './index.css'
 import App from './App'
 
-const BASENAME = '/joskapotin_12_04032022'
-
 /**
  * Rendering the App component to the DOM.
  */
 ReactDOM.render(
   <React.StrictMode>
-    <Router basename={BASENAME}>
+    <Router>
       <App />
     </Router>
   </React.StrictMode>,

@@ -17,7 +17,4 @@ export const unitConversion = (number) => {
  * @param {string} date
  * @returns {number} Return the number of the day
  */
-export const getDayNumber = (date) => {
-  const dayNumber = new Date(date)
-  return dayNumber.getDate()
-}
+export const getDayNumber = new Date().getDay()
