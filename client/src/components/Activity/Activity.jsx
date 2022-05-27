@@ -31,7 +31,7 @@ function Activity({ id }) {
    * @param {Object} obj
    * @param {Boolean} obj.active - is the tooltip active
    * @param {Array.<object>} obj.payload - a bunch information that you can display in the tooltip coming from rechart
-   * @returns
+   * @returns {JSX.Element} The tooltip component.
    */
   const customTooltip = ({ active, payload }) => {
     if (active && payload && payload.length) {

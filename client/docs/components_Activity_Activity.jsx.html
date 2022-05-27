@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Activity/Activity.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Activity/Activity.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import {
+  ResponsiveContainer,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  Bar,
+} from 'recharts'
+import PropTypes from 'prop-types'
+import { getDayNumber } from '../../helpers/helpers'
+import { getUserActivityUrl } from '../../services/api'
+import useFetch from '../../hooks/useFetch'
+import Spinner from '../Spinner/Spinner'
+import Error from '../Error/Error'
+import './Activity.css'
+
+/**
+ * Component that takes an id as a prop, fetches the user activity data from the API, and renders a bar chart with the data.
+ *
+ * @param {number} id - The id of the user we want the data for.
+ * @returns {JSX.Element} The activity charts component is returning a div with a title and a responsive bar chart.
+ */
+function Activity({ id }) {
+  const [data, loading, error] = useFetch(getUserActivityUrl(id))
+
+  /**
+   * Custom tooltip for recharts component
+   *
+   * @param {Object} obj
+   * @param {Boolean} obj.active - is the tooltip active
+   * @param {Array.&lt;object>} obj.payload - a bunch information that you can display in the tooltip coming from rechart
+   * @returns {JSX.Element} The tooltip component.
+   */
+  const customTooltip = ({ active, payload }) => {
+    if (active &amp;&amp; payload &amp;&amp; payload.length) {
+      return (
+        &lt;div className="activity-charts__tooltip">
+          &lt;span>{`${payload[0].value} kg`}&lt;/span>
+          &lt;span>{`${payload[1].value} kCal`}&lt;/span>
+        &lt;/div>
+      )
+    }
+    return null
+  }
+
+  if (loading) {
+    return &lt;Spinner>Loading...&lt;/Spinner>
+  }
+
+  if (error) {
+    return &lt;Error error={error} />
+  }
+
+  return (
+    &lt;div className="activity-charts__container">
+      &lt;h2 className="activity-charts__title">Activité quotidienne&lt;/h2>
+      &lt;ResponsiveContainer className="activity-charts" width="99%" height={320}>
+        &lt;BarChart barSize={7} data={data.sessions}>
+          &lt;CartesianGrid vertical={false} strokeDasharray="2" />
+          &lt;XAxis
+            tickFormatter={getDayNumber}
+            tickMargin={15}
+            dataKey="day"
+            tickLine={false}
+            axisLine={false}
+          />
+          &lt;YAxis
+            tickLine={false}
+            axisLine={false}
+            orientation="right"
+            type="number"
+            domain={['auto', 'auto']}
+          />
+          &lt;Tooltip content={customTooltip} offset={40} />
+          &lt;Legend
+            verticalAlign="top"
+            iconType="circle"
+            align="right"
+            height={50}
+            iconSize={8}
+          />
+          &lt;Bar
+            name="Poids (kg)"
+            dataKey="kilogram"
+            fill="#282D30"
+            radius={[7, 7, 0, 0]}
+          />
+          &lt;Bar
+            name="Calories brûlées (kCal)"
+            dataKey="calories"
+            fill="#E60000"
+            radius={[7, 7, 0, 0]}
+          />
+        &lt;/BarChart>
+      &lt;/ResponsiveContainer>
+    &lt;/div>
+  )
+}
+
+export default Activity
+
+Activity.propTypes = {
+  id: PropTypes.string.isRequired,
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#Activity">Activity</a></li><li><a href="global.html#API_URL">API_URL</a></li><li><a href="global.html#AverageSession">AverageSession</a></li><li><a href="global.html#getDayNumber">getDayNumber</a></li><li><a href="global.html#getUserActivityUrl">getUserActivityUrl</a></li><li><a href="global.html#getUserAverageSessionUrl">getUserAverageSessionUrl</a></li><li><a href="global.html#getUserMainDataUrl">getUserMainDataUrl</a></li><li><a href="global.html#getUserPerformanceUrl">getUserPerformanceUrl</a></li><li><a href="global.html#KeyCard">KeyCard</a></li><li><a href="global.html#KeyData">KeyData</a></li><li><a href="global.html#Performance">Performance</a></li><li><a href="global.html#TodayScore">TodayScore</a></li><li><a href="global.html#unitConversion">unitConversion</a></li><li><a href="global.html#useFetch">useFetch</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.10</a> on Fri May 27 2022 10:55:15 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
