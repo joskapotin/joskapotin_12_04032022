@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: components/TodayScore/TodayScore.jsx</title>
+    <title>JSDoc: Source: components/CircularProgressBar/CircularProgressBar.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: components/TodayScore/TodayScore.jsx</h1>
+    <h1 class="page-title">Source: components/CircularProgressBar/CircularProgressBar.jsx</h1>
 
     
 
@@ -27,44 +27,67 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import PropTypes from 'prop-types'
-import CircularProgressBar from '../CircularProgressBar/CircularProgressBar'
-import './TodayScore.css'
+import './CircularProgressBar.css'
 
 /**
- * It takes in a prop called todayScore and displays a circular progress bar with the percentage of the user goal
+ * It renders an SVG circle with a stroke that is filled in to a percentage of the circle's
+ * circumference
+ * @param {object} props
+ * @param {number} props.sqSize
+ * @param {number} props.strokeWidth
+ * @param {number} props.percent
  *
- * @param {Object} props
- * @param {number} props.todayScore - The value of today score.
- * @returns {JSX.Element} A div with a title, a circular progress bar and a text.
+ * @returns {JSX.Element} A circular progress bar.
  */
-function TodayScore({ todayScore }) {
-  const percentage = todayScore * 100
+
+function CircularProgressBar({ sqSize, strokeWidth, percentage }) {
+  // SVG centers the stroke width on the radius, subtract out so circle fits in square
+  const radius = (sqSize - strokeWidth) / 2
+  // Enclose cicle in a circumscribing square
+  const viewBox = `0 0 ${sqSize} ${sqSize}`
+  // Arc length at 100% coverage is the circle circumference
+  const dashArray = radius * Math.PI * 2
+  // Scale 100% coverage overlay with the actual percent
+  const dashOffset = dashArray - (dashArray * percentage) / 100
 
   return (
-    &lt;div className="today-score-charts__container">
-      &lt;h2 className="today-score-charts__title">Score&lt;/h2>
-      &lt;div className="today-score-charts">
-        &lt;CircularProgressBar
-          strokeWidth={10}
-          sqSize={160}
-          percentage={percentage}
-        />
-      &lt;/div>
-      &lt;p className="today-score-charts__text">
-        &lt;strong>{`${percentage}%`}&lt;/strong> de votre objectif
-      &lt;/p>
-    &lt;/div>
+    &lt;svg width={sqSize} height={sqSize} viewBox={viewBox}>
+      &lt;circle
+        className="circle-background"
+        cx={sqSize / 2}
+        cy={sqSize / 2}
+        r={radius}
+        strokeWidth={`${strokeWidth}px`}
+      />
+      &lt;circle
+        className="circle-progress"
+        cx={sqSize / 2}
+        cy={sqSize / 2}
+        r={radius}
+        strokeWidth={`${strokeWidth}px`}
+        // Start progress marker at 12 O'Clock
+        transform={`rotate(-90 ${sqSize / 2} ${sqSize / 2})`}
+        style={{
+          strokeDasharray: dashArray,
+          strokeDashoffset: dashOffset,
+        }}
+      />
+    &lt;/svg>
   )
 }
 
-export default TodayScore
+export default CircularProgressBar
 
-TodayScore.defaultProps = {
-  todayScore: 0,
+CircularProgressBar.defaultProps = {
+  sqSize: 200,
+  percentage: 25,
+  strokeWidth: 10,
 }
 
-TodayScore.propTypes = {
-  todayScore: PropTypes.number,
+CircularProgressBar.propTypes = {
+  sqSize: PropTypes.number,
+  percentage: PropTypes.number,
+  strokeWidth: PropTypes.number,
 }
 </code></pre>
         </article>
