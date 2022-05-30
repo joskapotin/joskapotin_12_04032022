@@ -1,6 +1,17 @@
 import PropTypes from 'prop-types'
 import './CircularProgressBar.css'
 
+/**
+ * It renders an SVG circle with a stroke that is filled in to a percentage of the circle's
+ * circumference
+ * @param {object} props
+ * @param {number} props.sqSize
+ * @param {number} props.strokeWidth
+ * @param {number} props.percent
+ *
+ * @returns {JSX.Element} A circular progress bar.
+ */
+
 function CircularProgressBar({ sqSize, strokeWidth, percentage }) {
   // SVG centers the stroke width on the radius, subtract out so circle fits in square
   const radius = (sqSize - strokeWidth) / 2
