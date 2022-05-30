@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 /**
  * @typedef FetchState
- * @type {Object}
+ * @type {Array}
  * @property {Array.<Object>} data - the fetched data or an empty array
  * @property {Boolean} loading - the loading status
  * @property {Error} error - the error if any
