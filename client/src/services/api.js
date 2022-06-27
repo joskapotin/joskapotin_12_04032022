@@ -1,37 +1,53 @@
+import useFetch from '../hooks/useFetch'
+
 /**
  * A constant that is assigned the api url
  */
-const API_URL = 'http://localhost:3000'
+const API_URL_USER = 'http://localhost:3000/user'
 
 /**
- * Function that takes in a user id and returns a url that points to the user's main data.
+ * Function that takes in a user id fetch the user main data and return the request state and results.
  *
  * @param {string} id - The id of the user you want to get data for.
- * @return {URL} - The url that points to the user's main data
+ * @returns {Object} state The request state The data, loading state, and error.
+ * @returns {Array.<Object>} state.data The fetched data or an empty array
+ * @returns {Boolean} state.loading The loading status
+ * @returns {Error} state.error The error if any
  */
-export const getUserMainDataUrl = (id) => `${API_URL}/user/${id}`
+export const getUserMainDataUrl = (id) => useFetch(`${API_URL_USER}/${id}`)
 
 /**
- * Function that takes in a user id and returns a url that points to the user's activity data.
+ * Function that takes in a user id fetch the user's activity data and return the request state and results.
  *
  * @param {string} id - The id of the user you want to get the activity for.
- * @return {URL} - The url that points to the user's activity data
+ * @returns {Object} state The request state The data, loading state, and error.
+ * @returns {Array.<Object>} state.data The fetched data or an empty array
+ * @returns {Boolean} state.loading The loading status
+ * @returns {Error} state.error The error if any
  */
-export const getUserActivityUrl = (id) => `${API_URL}/user/${id}/activity`
+export const getUserActivityUrl = (id) =>
+  useFetch(`${API_URL_USER}/${id}/activity`)
 
 /**
- * Function that takes in a user id and returns a url that points to the user's average session data.
+ * Function that takes in a user id fetch the user's average session data and return the request state and results.
  *
  * @param {string} id - The id of the user you want to get the average session for.
- * @return {URL} - The url that points to the user's average session data
+ * @returns {Object} state The request state The data, loading state, and error.
+ * @returns {Array.<Object>} state.data The fetched data or an empty array
+ * @returns {Boolean} state.loading The loading status
+ * @returns {Error} state.error The error if any
  */
 export const getUserAverageSessionUrl = (id) =>
-  `${API_URL}/user/${id}/average-sessions`
+  useFetch(`${API_URL_USER}/${id}/average-sessions`)
 
 /**
- * Function that takes in a user id and returns a url that points to the user's performance data.
+ * Function that takes in a user id fetch the user's performance data and return the request state and results.
  *
  * @param {string} id - The id of the user you want to get the performance for.
- * @return {URL} - The url that points to the user's performance data
+ * @returns {Object} state The request state The data, loading state, and error.
+ * @returns {Array.<Object>} state.data The fetched data or an empty array
+ * @returns {Boolean} state.loading The loading status
+ * @returns {Error} state.error The error if any
  */
-export const getUserPerformanceUrl = (id) => `${API_URL}/user/${id}/performance`
+export const getUserPerformanceUrl = (id) =>
+  useFetch(`${API_URL_USER}/${id}/performance`)

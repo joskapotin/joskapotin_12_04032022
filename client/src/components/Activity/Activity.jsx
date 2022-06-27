@@ -11,7 +11,6 @@ import {
 import PropTypes from 'prop-types'
 import { getDayNumber } from '../../helpers/helpers'
 import { getUserActivityUrl } from '../../services/api'
-import useFetch from '../../hooks/useFetch'
 import Spinner from '../Spinner/Spinner'
 import Error from '../Error/Error'
 import './Activity.css'
@@ -23,7 +22,7 @@ import './Activity.css'
  * @returns {JSX.Element} The activity charts component is returning a div with a title and a responsive bar chart.
  */
 function Activity({ id }) {
-  const [data, loading, error] = useFetch(getUserActivityUrl(id))
+  const { data, loading, error } = getUserActivityUrl(id)
 
   /**
    * Custom tooltip for recharts component

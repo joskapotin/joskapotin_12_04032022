@@ -8,7 +8,6 @@ import {
 } from 'recharts'
 import { PropTypes } from 'prop-types'
 import { getUserAverageSessionUrl } from '../../services/api'
-import useFetch from '../../hooks/useFetch'
 import Spinner from '../Spinner/Spinner'
 import Error from '../Error/Error'
 import './AverageSession.css'
@@ -20,7 +19,7 @@ import './AverageSession.css'
  * @returns {JSX.Element} The average session charts component is returning a div with a title and a responsive line chart.
  */
 function AverageSession({ id }) {
-  const [data, loading, error] = useFetch(getUserAverageSessionUrl(id))
+  const { data, loading, error } = getUserAverageSessionUrl(id)
 
   /**
    * Custom tooltip for recharts component

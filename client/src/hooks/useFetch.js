@@ -1,17 +1,12 @@
 import { useState, useEffect } from 'react'
 
 /**
- * @typedef FetchState
- * @type {Array}
- * @property {Array.<Object>} data - the fetched data or an empty array
- * @property {Boolean} loading - the loading status
- * @property {Error} error - the error if any
- */
-
-/**
  * Hook that fetches data from a URL and returns the data, loading state, and error.
  * @param {URL} url - The URL to fetch.
- * @returns {FetchState} The data, loading state, and error.
+ * @returns {Object} state The request state The data, loading state, and error.
+ * @returns {Array.<Object>} state.data The fetched data or an empty array
+ * @returns {Boolean} state.loading The loading status
+ * @returns {Error} state.error The error if any
  */
 function useFetch(url) {
   const [data, setData] = useState([])
@@ -50,7 +45,7 @@ function useFetch(url) {
     }
   }, [url, data])
 
-  return [data, loading, error]
+  return { data, loading, error }
 }
 
 export default useFetch

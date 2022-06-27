@@ -7,7 +7,6 @@ import {
 } from 'recharts'
 import PropTypes from 'prop-types'
 import { getUserPerformanceUrl } from '../../services/api'
-import useFetch from '../../hooks/useFetch'
 import Spinner from '../Spinner/Spinner'
 import Error from '../Error/Error'
 import './Performance.css'
@@ -20,7 +19,7 @@ import './Performance.css'
  * @returns {JSX.Element} The performance charts component is returning a div with a title and a responsive radar chart.
  */
 function Performance({ id }) {
-  const [data, loading, error] = useFetch(getUserPerformanceUrl(id))
+  const { data, loading, error } = getUserPerformanceUrl(id)
 
   // Format the data to feed the chart
   function formatData(dataToFormat) {

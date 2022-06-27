@@ -1,6 +1,5 @@
 import { useParams } from 'react-router-dom'
 import { getUserMainDataUrl } from '../../services/api'
-import useFetch from '../../hooks/useFetch'
 import KeyData from '../../components/KeyData/KeyData'
 import TodayScore from '../../components/TodayScore/TodayScore'
 import Activity from '../../components/Activity/Activity'
@@ -12,7 +11,7 @@ import './Dashboard.css'
 
 function Dashboard() {
   const { id } = useParams()
-  const [data, loading, error] = useFetch(getUserMainDataUrl(id))
+  const { data, loading, error } = getUserMainDataUrl(id)
 
   if (loading) {
     return <Spinner>Loading...</Spinner>
