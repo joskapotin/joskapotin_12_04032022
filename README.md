@@ -5,7 +5,6 @@
 ## 1: Prerequisites
 
 - NodeJS [(version 12.18 or newer)](https://nodejs.org/en/)
-- [Yarn](https://yarnpkg.com/)
 
 ## 2: Download the repository
 
@@ -13,10 +12,7 @@ Download the zip or clone the repository.
 
 ## 3: Launching the backend
 
-inside the server directory:
-
-- The `yarn` command will allow you to install the dependencies.
-- The `yarn dev` command will allow you to run the micro API.
+Follow the instruction [here](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard)
 
 ## 4: Launching the frontend
 

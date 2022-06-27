@@ -1,0 +1,47 @@
+.App-main {
+  width: 90%;
+  padding: 0 0 5rem;
+  margin-inline: auto;
+}
+
+.main__title {
+  margin-top: 3.75rem;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.main__title em {
+  color: #ff0000;
+  font-style: normal;
+}
+
+.main__subtitle {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+.dashboard__grid {
+  display: grid;
+  gap: 1.875rem;
+  grid-template-areas: "dashboard-charts keydata";
+}
+
+.dashboard__charts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 1.875rem;
+  grid-area: dashboard-charts;
+}
+
+.activity-charts__container {
+  width: 100%;
+}
+
+.key-data-charts {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  grid-area: keydata;
+}
