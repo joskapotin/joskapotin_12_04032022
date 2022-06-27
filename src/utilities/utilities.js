@@ -4,9 +4,9 @@
  * @param number - The number to be converted.
  * @returns A string.
  */
-export const unitConversion = (number) => {
+export const unitConversion = number => {
   if (number >= 1000) {
-    return `${(number / 1000).toString().replace('.', ',')}k`
+    return `${(number / 1000).toString().replace(".", ",")}k`
   }
   return `${number}`
 }
@@ -17,4 +17,4 @@ export const unitConversion = (number) => {
  * @param {string} date
  * @returns {number} Return the number of the day
  */
-export const getDayNumber = new Date().getDay()
+export const getDayNumber = date => new Date(date).getDate()

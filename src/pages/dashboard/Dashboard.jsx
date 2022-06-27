@@ -12,7 +12,7 @@ import "./Dashboard.css"
 function Dashboard() {
   const { id } = useParams()
 
-  const { loading, error, data } = api.getUserMain(id)
+  const { loading, error, data: main } = api.getUserMain(id)
   const { data: userActivity } = api.getUserActivity(id)
   const { data: userAverageSession } = api.getUserAverageSession(id)
   const { data: userPerformance } = api.getUserPerformance(id)
@@ -28,17 +28,17 @@ function Dashboard() {
   return (
     <main className="App-main">
       <h1 className="main__title">
-        Bonjour <em>{data && data.userInfos.firstName}</em>
+        Bonjour <em>{main && main.data.userInfos.firstName}</em>
       </h1>
       <p className="main__subtitle">Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       <div className="dashboard__grid">
         <div className="dashboard__charts">
-          {userActivity && <Activity data={userActivity} />}
-          {userAverageSession && <AverageSession data={userAverageSession} />}
-          {userPerformance && <Performance data={userPerformance} />}
-          {data && <TodayScore data={data.todayScore} />}
+          {userActivity && <Activity data={userActivity.data} />}
+          {userAverageSession && <AverageSession data={userAverageSession.data} />}
+          {userPerformance && <Performance data={userPerformance.data} />}
+          {main && <TodayScore data={main.data.todayScore} />}
         </div>
-        {data && <KeyData data={data.keyData} />}
+        {main && <KeyData data={main.data.keyData} />}
       </div>
     </main>
   )

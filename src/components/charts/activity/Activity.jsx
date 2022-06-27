@@ -4,7 +4,7 @@ import { getDayNumber } from "../../../utilities/utilities"
 import "./Activity.css"
 
 /**
- * Component that takes an id as a prop, fetches the user activity data from the API, and renders a bar chart with the data.
+ * Component that takes data and renders a bar chart with the data.
  */
 function Activity({ data }) {
   /**

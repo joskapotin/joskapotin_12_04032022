@@ -21,19 +21,14 @@ Inside the client directory:
 - The `npm install` command will allow you to install the dependencies.
 - The `npm start` command will allow you to run the frontend.
 
-**_By default, the server try to use the port 3000. So, this message will appear :_**
-
-    ? Something is already running on port 3000. Would you like to run the app on another port instead? >> (Y/n)
-
-Press the key "y".
-The application will now run on "localhost:3001".
-
 ## Preview user's page
 
 There is 2 demo users.
 
 You can access there page at the following url
 
-localhost:3001/user/12
+localhost:3000/user/12
+localhost:3000/user/18
 
-localhost:3001/user/18
+The port will change if another service run on this one.
+Check the console for the right port.
