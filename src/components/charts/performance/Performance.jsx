@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import "./Performance.css"
 
 /**
- * Component that takes an id as a prop, fetches the user performance data from the API, and renders a radar chart with the data.
+ * Component that takes data and renders a radar chart with the data.
  */
 function Performance({ data }) {
   // Format the data to feed the chart

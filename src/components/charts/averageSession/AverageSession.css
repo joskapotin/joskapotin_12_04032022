@@ -1,11 +1,9 @@
 .average-session-charts__container {
   display: grid;
   overflow: hidden;
-  width: 16.25rem;
-  aspect-ratio: 1/1;
   background: red;
   border-radius: 5px;
-  grid-template-areas: 'session-stack';
+  grid-template-areas: "session-stack";
 }
 
 .average-session-charts__title {

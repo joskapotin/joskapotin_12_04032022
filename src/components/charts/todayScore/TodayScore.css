@@ -1,12 +1,10 @@
 .today-score-charts__container {
   display: grid;
   overflow: hidden;
-  width: 16.25rem;
   padding: 1.5625rem;
-  aspect-ratio: 1/1;
   background-color: #fbfbfb;
   border-radius: 5px;
-  grid-template-areas: 'score-stack';
+  grid-template-areas: "score-stack";
 }
 
 .today-score-charts__title {

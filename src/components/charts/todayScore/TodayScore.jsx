@@ -3,7 +3,7 @@ import CircularProgressBar from "../circularProgressBar/CircularProgressBar"
 import "./TodayScore.css"
 
 /**
- * It takes in a prop called todayScore and displays a circular progress bar with the percentage of the user goal
+ * It takes data and render a circular progress bar with the data.
  */
 function TodayScore({ data }) {
   const percentage = data * 100

@@ -3,10 +3,7 @@ import { PropTypes } from "prop-types"
 import "./AverageSession.css"
 
 /**
- * Component that takes an id as a prop, fetches the user average session data from the API, and renders a line chart with the data.
- *
- * @param {number} id - The id of the user we want the data for.
- * @returns {JSX.Element} The average session charts component is returning a div with a title and a responsive line chart.
+ * Component that takes data and renders a line chart with the data.
  */
 function AverageSession({ data }) {
   /**
