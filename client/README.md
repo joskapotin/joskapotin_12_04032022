@@ -24,4 +24,10 @@ In order to get this project running you'll first need to make sure that the fol
 
 2 - [npm](https://www.npmjs.com/) (version 6.14 or newer)
 
-# Installing SportSee frontend
+# Lauching SportSee frontend
+
+Inside the client directory:
+
+1 - The `npm install` command will allow you to install the dependencies.
+
+2 - The `npm start` command will allow you to run the frontend.
