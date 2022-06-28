@@ -1,4 +1,4 @@
-import useFetch from "../hooks/useFetch/useFetch"
+import useFetch from "../hooks/useFetch"
 
 /**
  * Mock API
