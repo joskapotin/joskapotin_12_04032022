@@ -6,16 +6,14 @@ import "./TodayScore.css"
  * It takes data and render a circular progress bar with the data.
  */
 function TodayScore({ data }) {
-  const percentage = data * 100
-
   return (
     <div className="today-score-charts__container">
       <h2 className="today-score-charts__title">Score</h2>
       <div className="today-score-charts">
-        <CircularProgressBar strokeWidth={10} sqSize={160} percentage={percentage} />
+        <CircularProgressBar strokeWidth={10} sqSize={160} percentage={data} />
       </div>
       <p className="today-score-charts__text">
-        <strong>{`${percentage}%`}</strong> de votre objectif
+        <strong>{`${data}%`}</strong> de votre objectif
       </p>
     </div>
   )
@@ -23,10 +21,6 @@ function TodayScore({ data }) {
 
 export default TodayScore
 
-TodayScore.defaultProps = {
-  data: 0,
-}
-
 TodayScore.propTypes = {
-  data: PropTypes.number,
+  data: PropTypes.number.isRequired,
 }

@@ -1,12 +1,13 @@
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from "recharts"
 import PropTypes from "prop-types"
-import { getDayNumber } from "../../../utilities/utilities"
+import { activityFormatter } from "../../../utilities/formaters"
 import "./Activity.css"
 
 /**
  * Component that takes data and renders a bar chart with the data.
  */
 function Activity({ data }) {
+  const activityData = activityFormatter(data)
   /**
    * Custom tooltip for recharts component
    *
@@ -31,9 +32,9 @@ function Activity({ data }) {
     <div className="activity-charts__container">
       <h2 className="activity-charts__title">Activité quotidienne</h2>
       <ResponsiveContainer className="activity-charts" width="99%" height={320}>
-        <BarChart barSize={7} data={data.sessions}>
+        <BarChart barSize={7} data={activityData}>
           <CartesianGrid vertical={false} strokeDasharray="2" />
-          <XAxis tickFormatter={getDayNumber} tickMargin={15} dataKey="day" tickLine={false} axisLine={false} />
+          <XAxis tickMargin={15} dataKey="day" tickLine={false} axisLine={false} />
           <YAxis tickLine={false} axisLine={false} orientation="right" type="number" domain={["auto", "auto"]} />
           <Tooltip content={customTooltip} offset={40} />
           <Legend verticalAlign="top" iconType="circle" align="right" height={50} iconSize={8} />
@@ -49,12 +50,15 @@ export default Activity
 
 Activity.propTypes = {
   data: PropTypes.shape({
-    sessions: PropTypes.arrayOf(
-      PropTypes.shape({
-        day: PropTypes.string.isRequired,
-        kilogram: PropTypes.number.isRequired,
-        calories: PropTypes.number.isRequired,
-      })
-    ).isRequired,
+    data: PropTypes.shape({
+      userId: PropTypes.number,
+      sessions: PropTypes.arrayOf(
+        PropTypes.shape({
+          day: PropTypes.string.isRequired,
+          kilogram: PropTypes.number.isRequired,
+          calories: PropTypes.number.isRequired,
+        }).isRequired
+      ).isRequired,
+    }).isRequired,
   }).isRequired,
 }

@@ -43,7 +43,7 @@
 .performance-charts__container,
 .today-score-charts__container {
   flex: 1 1 0;
-  min-width: 12rem;
+  min-width: 16rem;
   max-width: 16.25rem;
   aspect-ratio: 1/1;
 }
