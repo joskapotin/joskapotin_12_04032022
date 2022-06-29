@@ -1,7 +1,7 @@
 /**
  * Given a number, return a string that represents the number in a more human readable format
  *
- * @param number - The number to be converted.
+ * @param {number} value - The number to be converted.
  * @returns A string.
  */
 const unitConversion = value => {
@@ -31,35 +31,56 @@ export const getDayFirstLetter = number => {
   return `${weekday[number - 1]}`
 }
 
-export const mainFormatter = ({
-  data: {
-    userInfos: { firstName },
-    todayScore,
-    keyData: { calorieCount, proteinCount, carbohydrateCount, lipidCount },
-  },
-}) => ({
-  firstName: firstName.toString(),
-  todayScore: parseInt(todayScore * 100, 10),
-  keyData: {
-    calorieCount: `${unitConversion(calorieCount)}Cal`,
-    proteinCount: `${unitConversion(proteinCount)}g`,
-    carbohydrateCount: `${unitConversion(carbohydrateCount)}g`,
-    lipidCount: `${unitConversion(lipidCount)}g`,
-  },
-})
+/**
+ * It takes the data from the query and formats it into a format that the React component can use
+ *
+ * @param {object} data - The response from the query
+ * @returns {object} Return the formatted data
+ */
+export const mainFormatter = ({ data: { userInfos, todayScore, keyData } }) => {
+  const { firstName } = userInfos
+  const { calorieCount, proteinCount, carbohydrateCount, lipidCount } = keyData
+  return {
+    firstName: firstName.toString(),
+    todayScore: todayScore * 100,
+    keyData: {
+      calorieCount: `${unitConversion(calorieCount)}Cal`,
+      proteinCount: `${unitConversion(proteinCount)}g`,
+      carbohydrateCount: `${unitConversion(carbohydrateCount)}g`,
+      lipidCount: `${unitConversion(lipidCount)}g`,
+    },
+  }
+}
 
+/**
+ * It takes the data from the query and formats it into a format that the React component can use
+ *
+ * @param {object} data - The response from the query
+ * @returns {object} Return the formatted data
+ */
 export const activityFormatter = ({ data: { sessions } }) =>
   sessions.map(session => {
     const { day, kilogram, calories } = session
     return { day: getDayNumber(day), kilogram: parseInt(kilogram, 10), calories: parseInt(calories, 10) }
   })
 
+/**
+ * It takes the data from the query and formats it into a format that the React component can use
+ *
+ * @param {object} data - The response from the query
+ * @returns {object} Return the formatted data
+ */
 export const averageFormatter = ({ data: { sessions } }) =>
   sessions.map(session => {
     const { day, sessionLength } = session
     return { day: getDayFirstLetter(day).toString(), sessionLength: parseInt(sessionLength, 10) }
   })
 
+/**
+ * It takes a string as an argument and returns a translated string
+ * @param {string} text - The string to be translated
+ * @returns the translated text.
+ */
 const translateText = text => {
   switch (text) {
     case "cardio":
@@ -79,6 +100,12 @@ const translateText = text => {
   }
 }
 
+/**
+ * It takes the data from the query and formats it into a format that the React component can use
+ *
+ * @param {object} data - The response from the query
+ * @returns {object} Return the formatted data
+ */
 export const performanceFormatter = ({ data }) => {
   const { kind: kinds, data: sessions } = data
 

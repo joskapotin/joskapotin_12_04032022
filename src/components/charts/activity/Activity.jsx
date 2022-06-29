@@ -8,6 +8,7 @@ import "./Activity.css"
  */
 function Activity({ data }) {
   const activityData = activityFormatter(data)
+
   /**
    * Custom tooltip for recharts component
    *
@@ -48,6 +49,15 @@ function Activity({ data }) {
 
 export default Activity
 
+Activity.defaultProps = {
+  data: {
+    data: {
+      userId: null,
+      sessions: [],
+    },
+  },
+}
+
 Activity.propTypes = {
   data: PropTypes.shape({
     data: PropTypes.shape({
@@ -57,8 +67,8 @@ Activity.propTypes = {
           day: PropTypes.string.isRequired,
           kilogram: PropTypes.number.isRequired,
           calories: PropTypes.number.isRequired,
-        }).isRequired
-      ).isRequired,
-    }).isRequired,
-  }).isRequired,
+        })
+      ),
+    }),
+  }),
 }

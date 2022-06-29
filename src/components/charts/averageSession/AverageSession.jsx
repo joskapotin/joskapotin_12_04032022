@@ -8,6 +8,7 @@ import "./AverageSession.css"
  */
 function AverageSession({ data }) {
   const averageData = averageFormatter(data)
+
   /**
    * Custom tooltip for recharts component
    *
@@ -55,6 +56,15 @@ function AverageSession({ data }) {
 
 export default AverageSession
 
+AverageSession.defaultProps = {
+  data: {
+    data: {
+      userId: null,
+      sessions: [],
+    },
+  },
+}
+
 AverageSession.propTypes = {
   data: PropTypes.shape({
     data: PropTypes.shape({
@@ -63,8 +73,8 @@ AverageSession.propTypes = {
         PropTypes.shape({
           day: PropTypes.number.isRequired,
           sessionLength: PropTypes.number.isRequired,
-        }).isRequired
-      ).isRequired,
-    }).isRequired,
-  }).isRequired,
+        })
+      ),
+    }),
+  }),
 }

@@ -1,11 +1,18 @@
 import PropTypes from "prop-types"
 
-function Error({ error }) {
-  return <h3>Une erreur est survenue: {error}</h3>
+function Error({ resetErrorBoundary }) {
+  return (
+    <main className="App-main">
+      There was an error!
+      <button type="button" onClick={() => resetErrorBoundary()}>
+        Try again
+      </button>
+    </main>
+  )
 }
 
 export default Error
 
 Error.propTypes = {
-  error: PropTypes.string.isRequired,
+  resetErrorBoundary: PropTypes.func.isRequired,
 }

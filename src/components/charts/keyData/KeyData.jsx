@@ -23,11 +23,20 @@ function KeyData({ data }) {
 
 export default KeyData
 
+KeyData.defaultProps = {
+  data: {
+    calorieCount: 0,
+    proteinCount: 0,
+    carbohydrateCount: 0,
+    lipidCount: 0,
+  },
+}
+
 KeyData.propTypes = {
   data: PropTypes.shape({
-    calorieCount: PropTypes.string.isRequired,
-    proteinCount: PropTypes.string.isRequired,
-    carbohydrateCount: PropTypes.string.isRequired,
-    lipidCount: PropTypes.string.isRequired,
-  }).isRequired,
+    calorieCount: PropTypes.string,
+    proteinCount: PropTypes.string,
+    carbohydrateCount: PropTypes.string,
+    lipidCount: PropTypes.string,
+  }),
 }

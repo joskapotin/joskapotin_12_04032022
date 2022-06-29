@@ -24,17 +24,27 @@ function Performance({ data }) {
 
 export default Performance
 
+Performance.defaultProps = {
+  data: {
+    data: {
+      userId: null,
+      kind: {},
+      data: [],
+    },
+  },
+}
+
 Performance.propTypes = {
   data: PropTypes.shape({
     data: PropTypes.shape({
       userId: PropTypes.number,
-      kind: PropTypes.objectOf(PropTypes.string).isRequired,
+      kind: PropTypes.objectOf(PropTypes.string),
       data: PropTypes.arrayOf(
         PropTypes.shape({
           kind: PropTypes.number.isRequired,
           value: PropTypes.number.isRequired,
-        }).isRequired
-      ).isRequired,
-    }).isRequired,
-  }).isRequired,
+        })
+      ),
+    }),
+  }),
 }
