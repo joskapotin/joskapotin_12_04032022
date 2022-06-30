@@ -1,11 +1,10 @@
-import PropTypes from "prop-types"
 import CircularProgressBar from "../circularProgressBar/CircularProgressBar"
 import "./TodayScore.css"
 
 /**
  * It takes data and render a circular progress bar with the data.
  */
-function TodayScore({ data = 0 }) {
+function TodayScore({ data }: { data: number }) {
   return (
     <div className="today-score-charts__container">
       <h2 className="today-score-charts__title">Score</h2>
@@ -23,8 +22,4 @@ export default TodayScore
 
 TodayScore.defaultProps = {
   data: 0,
-}
-
-TodayScore.propTypes = {
-  data: PropTypes.number,
 }

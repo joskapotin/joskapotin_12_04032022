@@ -1,24 +1,21 @@
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from "recharts"
-import PropTypes from "prop-types"
-import { activityFormatter } from "../../../utilities/formaters"
+import { activityFormatter } from "../../../utilities/formatters"
+import type { ActivityData } from "../../../services/api"
+import type { TooltipProps } from "recharts"
+import type { ValueType, NameType } from "recharts/src/component/DefaultTooltipContent"
 import "./Activity.css"
 
 /**
  * Component that takes data and renders a bar chart with the data.
  */
-function Activity({ data }) {
+function Activity({ data }: { data: ActivityData }) {
   const activityData = activityFormatter(data)
 
   /**
    * Custom tooltip for recharts component
-   *
-   * @param {Object} obj
-   * @param {Boolean} obj.active - is the tooltip active
-   * @param {Array.<object>} obj.payload - a bunch information that you can display in the tooltip coming from rechart
-   * @returns {JSX.Element | null} The tooltip component.
    */
-  const customTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
+  const customTooltip = ({ active, payload }: TooltipProps<ValueType, NameType>) => {
+    if (active && payload) {
       return (
         <div className="activity-charts__tooltip">
           <span>{`${payload[0].value} kg`}</span>
@@ -56,19 +53,4 @@ Activity.defaultProps = {
       sessions: [],
     },
   },
-}
-
-Activity.propTypes = {
-  data: PropTypes.shape({
-    data: PropTypes.shape({
-      userId: PropTypes.number,
-      sessions: PropTypes.arrayOf(
-        PropTypes.shape({
-          day: PropTypes.string.isRequired,
-          kilogram: PropTypes.number.isRequired,
-          calories: PropTypes.number.isRequired,
-        })
-      ),
-    }),
-  }),
 }

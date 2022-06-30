@@ -1,11 +1,44 @@
+import type { MainData, ActivityData, AverageSessionData, PerformanceData } from "../services/api"
+
+export type MainDataFormated = {
+  firstName: string
+  todayScore: number
+  keyData: {
+    calorieCount: string
+    proteinCount: string
+    carbohydrateCount: string
+    lipidCount: string
+  }
+}
+
+export type ActivityDataFormated = {
+  day: number
+  kilogram: number
+  calories: number
+}[]
+
+export type AverageSessionDataFormated = {
+  day: string
+  sessionLength: number
+}[]
+
+export type PerformanceDataFormated = {
+  value: number
+  kind: string
+}[]
+
+type mainFormatterFunction = (data: MainData) => MainDataFormated
+
+type activityFormatterFunction = (data: ActivityData) => ActivityDataFormated
+
+type averageSessionFormatterFunction = (data: AverageSessionData) => AverageSessionDataFormated
+
+type performanceFormatterFunction = (data: PerformanceData) => PerformanceDataFormated
+
 /**
  * Given a number, return a string that represents the number in a more human readable format
- *
- * @param {number} value - The number to be converted.
- * @returns A string.
  */
-const unitConversion = value => {
-  const number = parseInt(value, 10)
+const unitConversion = (number: number) => {
   if (number >= 1000) {
     return `${(number / 1000).toString().replace(".", ",")}k`
   }
@@ -14,34 +47,25 @@ const unitConversion = value => {
 
 /**
  * Give the number of the day from a date formated as yyyy/mm/dd
- *
- * @param {string} date
- * @returns {number} Return the number of the day
  */
-export const getDayNumber = date => new Date(date).getDate()
+export const getDayNumber = (date: string) => new Date(date).getDate()
 
 /**
  * Give the first letter of the day from the number of the day
- *
- * @param {number} number
- * @returns {string} Return the first letter of the day
  */
-export const getDayFirstLetter = number => {
+export const getDayFirstLetter = (number: number) => {
   const weekday = ["L", "M", "M", "J", "V", "S", "D"]
   return `${weekday[number - 1]}`
 }
 
 /**
  * It takes the data from the query and formats it into a format that the React component can use
- *
- * @param {object} data - The response from the query
- * @returns {object} Return the formatted data
  */
-export const mainFormatter = ({ data: { userInfos, todayScore, keyData } }) => {
+export const mainFormatter: mainFormatterFunction = ({ data: { userInfos, todayScore, keyData } }) => {
   const { firstName } = userInfos
   const { calorieCount, proteinCount, carbohydrateCount, lipidCount } = keyData
   return {
-    firstName: firstName.toString(),
+    firstName: firstName,
     todayScore: todayScore * 100,
     keyData: {
       calorieCount: `${unitConversion(calorieCount)}Cal`,
@@ -54,34 +78,30 @@ export const mainFormatter = ({ data: { userInfos, todayScore, keyData } }) => {
 
 /**
  * It takes the data from the query and formats it into a format that the React component can use
- *
- * @param {object} data - The response from the query
- * @returns {object} Return the formatted data
  */
-export const activityFormatter = ({ data: { sessions } }) =>
+export const activityFormatter: activityFormatterFunction = ({ data: { sessions } }) =>
   sessions.map(session => {
     const { day, kilogram, calories } = session
-    return { day: getDayNumber(day), kilogram: parseInt(kilogram, 10), calories: parseInt(calories, 10) }
+    return {
+      day: getDayNumber(day),
+      kilogram: kilogram,
+      calories: calories,
+    }
   })
 
 /**
  * It takes the data from the query and formats it into a format that the React component can use
- *
- * @param {object} data - The response from the query
- * @returns {object} Return the formatted data
  */
-export const averageFormatter = ({ data: { sessions } }) =>
+export const averageSessionFormatter: averageSessionFormatterFunction = ({ data: { sessions } }) =>
   sessions.map(session => {
     const { day, sessionLength } = session
-    return { day: getDayFirstLetter(day).toString(), sessionLength: parseInt(sessionLength, 10) }
+    return { day: getDayFirstLetter(day), sessionLength: sessionLength }
   })
 
 /**
  * It takes a string as an argument and returns a translated string
- * @param {string} text - The string to be translated
- * @returns the translated text.
  */
-const translateText = text => {
+const translateText = (text: string): string => {
   switch (text) {
     case "cardio":
       return "Cardio"
@@ -96,21 +116,18 @@ const translateText = text => {
     case "intensity":
       return "Intensité"
     default:
-      return text.toString()
+      return text
   }
 }
 
 /**
  * It takes the data from the query and formats it into a format that the React component can use
- *
- * @param {object} data - The response from the query
- * @returns {object} Return the formatted data
  */
-export const performanceFormatter = ({ data }) => {
+export const performanceFormatter: performanceFormatterFunction = ({ data }) => {
   const { kind: kinds, data: sessions } = data
 
   return sessions.map(session => {
     const { value, kind } = session
-    return { value: parseInt(value, 10), kind: translateText(kinds[kind]) }
+    return { value: value, kind: translateText(kinds[kind]) }
   })
 }

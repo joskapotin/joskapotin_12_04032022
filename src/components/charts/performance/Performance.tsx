@@ -1,12 +1,12 @@
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } from "recharts"
-import PropTypes from "prop-types"
-import { performanceFormatter } from "../../../utilities/formaters"
+import { performanceFormatter } from "../../../utilities/formatters"
+import type { PerformanceData } from "../../../services/api"
 import "./Performance.css"
 
 /**
  * Component that takes data and renders a radar chart with the data.
  */
-function Performance({ data }) {
+function Performance({ data }: { data: PerformanceData }) {
   const performanceData = performanceFormatter(data)
 
   return (
@@ -32,19 +32,4 @@ Performance.defaultProps = {
       data: [],
     },
   },
-}
-
-Performance.propTypes = {
-  data: PropTypes.shape({
-    data: PropTypes.shape({
-      userId: PropTypes.number,
-      kind: PropTypes.objectOf(PropTypes.string),
-      data: PropTypes.arrayOf(
-        PropTypes.shape({
-          kind: PropTypes.number.isRequired,
-          value: PropTypes.number.isRequired,
-        })
-      ),
-    }),
-  }),
 }

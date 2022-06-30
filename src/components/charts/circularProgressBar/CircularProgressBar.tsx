@@ -1,11 +1,9 @@
-import PropTypes from "prop-types"
 import "./CircularProgressBar.css"
 
 /**
- * It renders an SVG circle with a stroke that is filled in to a percentage of the circle's
- * circumference
+ * It renders an SVG circle with a stroke that is filled in to a percentage of the circle's circumference
  */
-function CircularProgressBar({ sqSize, strokeWidth, percentage }) {
+function CircularProgressBar({ sqSize, strokeWidth, percentage }: { sqSize: number; strokeWidth: number; percentage: number }) {
   // SVG centers the stroke width on the radius, subtract out so circle fits in square
   const radius = (sqSize - strokeWidth) / 2
   // Enclose cicle in a circumscribing square
@@ -41,10 +39,4 @@ CircularProgressBar.defaultProps = {
   sqSize: 200,
   percentage: 0,
   strokeWidth: 10,
-}
-
-CircularProgressBar.propTypes = {
-  sqSize: PropTypes.number,
-  percentage: PropTypes.number,
-  strokeWidth: PropTypes.number,
 }

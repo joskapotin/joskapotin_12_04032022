@@ -1,10 +1,15 @@
-import { PropTypes } from "prop-types"
 import "./KeyCard.css"
+
+type KeyCardProps = {
+  text: string
+  legend: string
+  icon: string
+}
 
 /**
  * Component that takes in an object with a text, a legend and an icon image and returns a card
  */
-function KeyCard({ text, legend, icon }) {
+function KeyCard({ text, legend, icon }: KeyCardProps) {
   return (
     <div className="key-card">
       <img className="key-card__icon" src={icon} alt="" />
@@ -17,9 +22,3 @@ function KeyCard({ text, legend, icon }) {
 }
 
 export default KeyCard
-
-KeyCard.propTypes = {
-  text: PropTypes.string.isRequired,
-  legend: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
-}

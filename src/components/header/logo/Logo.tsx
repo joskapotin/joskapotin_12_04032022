@@ -1,16 +1,8 @@
-import './Logo.css'
+import "./Logo.css";
 
 function Logo() {
-  const style = {
-    maskType: 'alpha',
-  }
   return (
-    <svg
-      className="App-logo"
-      viewBox="0 0 58 58"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
+    <svg className="App-logo" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
         d="M28.5982 57.7027C44.3925 57.7027 57.1963 44.7855 57.1963 28.8514C57.1963 12.9172 44.3925 0 28.5982 0C12.8038 0 0 12.9172 0 28.8514C0 44.7855 12.8038 57.7027 28.5982 57.7027Z"
         fill="#FF0101"
@@ -21,7 +13,7 @@ function Logo() {
       />
       <mask
         id="mask0_44_12"
-        style={style}
+        style={{ maskType: "alpha" }}
         maskUnits="userSpaceOnUse"
         x="0"
         y="0"
@@ -40,7 +32,7 @@ function Logo() {
         />
       </g>
     </svg>
-  )
+  );
 }
 
-export default Logo
+export default Logo;
