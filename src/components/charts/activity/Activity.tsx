@@ -1,6 +1,6 @@
+import PropTypes from "prop-types"
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from "recharts"
-import { activityFormatter } from "../../../utilities/formatters"
-import type { ActivityData } from "../../../services/api"
+import type { ActivityDataFormated } from "../../../utilities/formatters"
 import type { TooltipProps } from "recharts"
 import type { ValueType, NameType } from "recharts/src/component/DefaultTooltipContent"
 import "./Activity.css"
@@ -8,9 +8,7 @@ import "./Activity.css"
 /**
  * Component that takes data and renders a bar chart with the data.
  */
-function Activity({ data }: { data: ActivityData }) {
-  const activityData = activityFormatter(data)
-
+function Activity({ data }: { data: ActivityDataFormated | undefined }) {
   /**
    * Custom tooltip for recharts component
    */
@@ -29,8 +27,8 @@ function Activity({ data }: { data: ActivityData }) {
   return (
     <div className="activity-charts__container">
       <h2 className="activity-charts__title">Activité quotidienne</h2>
-      <ResponsiveContainer className="activity-charts" width="99%" height={250}>
-        <BarChart barSize={7} data={activityData}>
+      <ResponsiveContainer className="activity-charts" width="99%" height="100%">
+        <BarChart barSize={7} data={data}>
           <CartesianGrid vertical={false} strokeDasharray="2" />
           <XAxis tickMargin={15} dataKey="day" tickLine={false} axisLine={false} />
           <YAxis tickLine={false} axisLine={false} orientation="right" type="number" domain={["auto", "auto"]} />
@@ -47,10 +45,15 @@ function Activity({ data }: { data: ActivityData }) {
 export default Activity
 
 Activity.defaultProps = {
-  data: {
-    data: {
-      userId: null,
-      sessions: [],
-    },
-  },
+  data: [],
+}
+
+Activity.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      day: PropTypes.string.isRequired,
+      kilogram: PropTypes.number.isRequired,
+      calories: PropTypes.number.isRequired,
+    }).isRequired
+  ),
 }

@@ -38,3 +38,30 @@ body,
 .App-sidebar {
   justify-self: start;
 }
+
+.App-main {
+  padding: 1rem;
+}
+
+.main__title {
+  margin-top: 2.75rem;
+  font-size: 3rem;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.main__title em {
+  color: #ff0000;
+  font-style: normal;
+}
+
+.main__subtitle {
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+@media screen and (min-width: 1440px) {
+  .App-main {
+    padding: 1.5rem 5.625rem 5.375rem 6.8125rem;
+  }
+}

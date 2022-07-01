@@ -1,111 +1,75 @@
-.App-main {
-  width: 90%;
-  padding: 0 0 5rem;
-  margin-inline: auto;
-}
-
-.main__title {
-  margin-top: 3.75rem;
-  font-size: 3rem;
-  font-style: normal;
-  font-weight: 500;
-}
-
-.main__title em {
-  color: #ff0000;
-  font-style: normal;
-}
-
-.main__subtitle {
-  font-size: 1.125rem;
-  font-weight: 400;
-}
-
 .dashboard__grid {
   display: grid;
   gap: 1rem;
+  grid-template-areas:
+    "activity"
+    "average"
+    "performance"
+    "score"
+    "key";
+  justify-items: stretch;
 }
 
-.dashboard__charts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
+.activity-charts__container,
+.average-session-charts__container,
+.performance-charts__container {
+  height: 20rem;
 }
 
 .activity-charts__container {
-  width: 100%;
+  grid-area: activity;
 }
 
-.average-session-charts__container,
-.performance-charts__container,
+.average-session-charts__container {
+  grid-area: average;
+}
+
+.performance-charts__container {
+  grid-area: performance;
+}
+
 .today-score-charts__container {
-  width: 12rem;
-  height: 12rem;
+  grid-area: score;
 }
 
-.key-data-charts {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+.key-data-charts__container {
   gap: 1rem;
-}
-
-.key-data-charts .key-card {
-  flex-grow: 1;
+  display: grid;
+  grid-area: key;
 }
 
 @media screen and (min-width: 1024px) {
   .dashboard__grid {
-    grid-template-areas: "dashboard-charts keydata";
-  }
-
-  .dashboard__charts {
-    grid-area: dashboard-charts;
+    grid-template-areas:
+      "activity activity activity key"
+      "average performance score key";
+    grid-template-columns: repeat(4, 1fr);
   }
 
   .average-session-charts__container,
   .performance-charts__container,
   .today-score-charts__container {
-    width: 13.2rem;
-    height: 13.2rem;
+    height: 100%;
   }
 
-  .key-data-charts {
-    flex-direction: column;
-    gap: 2.4375rem;
-    min-width: 12rem;
-    grid-area: keydata;
-    justify-content: flex-start;
-  }
-
-  .key-data-charts .key-card {
-    flex-grow: 0;
+  .key-data-charts__container {
+    align-self: stretch;
   }
 }
 
-@media screen and (min-width: 1200px) {
-  .average-session-charts__container,
-  .performance-charts__container,
-  .today-score-charts__container {
-    width: 14rem;
-    height: 14rem;
+@media screen and (min-width: 1440px) {
+  .dashboard__grid {
+    gap: 1.875rem;
   }
 
-  .key-data-charts {
-    min-width: 15.9rem;
-  }
-}
-
-@media screen and (min-width: 1316px) {
   .average-session-charts__container,
   .performance-charts__container,
   .today-score-charts__container {
     width: 16.125rem;
-    height: 16.125rem;
+    height: 16.4375rem;
   }
 
   .key-data-charts {
-    min-width: 16.125rem;
+    width: 16.125rem;
   }
 }

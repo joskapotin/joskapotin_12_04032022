@@ -20,7 +20,7 @@ type keyDataProps = {
 function KeyData({ data }: keyDataProps) {
   const { calorieCount, proteinCount, carbohydrateCount, lipidCount } = data
   return (
-    <div className="key-data-charts">
+    <div className="key-data-charts__container">
       <KeyCard icon={caloriesIcon} text={calorieCount} legend="Calories" />
       <KeyCard icon={proteinIcon} text={proteinCount} legend="Proteines" />
       <KeyCard icon={carbsIcon} text={carbohydrateCount} legend="Glucides" />
