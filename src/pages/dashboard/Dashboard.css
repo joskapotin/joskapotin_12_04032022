@@ -23,16 +23,14 @@
 
 .dashboard__grid {
   display: grid;
-  gap: 1.875rem;
-  grid-template-areas: "dashboard-charts keydata";
+  gap: 1rem;
 }
 
 .dashboard__charts {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 1.875rem;
-  grid-area: dashboard-charts;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .activity-charts__container {
@@ -42,15 +40,72 @@
 .average-session-charts__container,
 .performance-charts__container,
 .today-score-charts__container {
-  flex: 1 1 0;
-  min-width: 16rem;
-  max-width: 16.25rem;
-  aspect-ratio: 1/1;
+  width: 12rem;
+  height: 12rem;
 }
 
 .key-data-charts {
   display: flex;
-  flex-direction: column;
-  gap: 2.5rem;
-  grid-area: keydata;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.key-data-charts .key-card {
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 1024px) {
+  .dashboard__grid {
+    grid-template-areas: "dashboard-charts keydata";
+  }
+
+  .dashboard__charts {
+    grid-area: dashboard-charts;
+  }
+
+  .average-session-charts__container,
+  .performance-charts__container,
+  .today-score-charts__container {
+    width: 13.2rem;
+    height: 13.2rem;
+  }
+
+  .key-data-charts {
+    flex-direction: column;
+    gap: 2.4375rem;
+    min-width: 12rem;
+    grid-area: keydata;
+    justify-content: flex-start;
+  }
+
+  .key-data-charts .key-card {
+    flex-grow: 0;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .average-session-charts__container,
+  .performance-charts__container,
+  .today-score-charts__container {
+    width: 14rem;
+    height: 14rem;
+  }
+
+  .key-data-charts {
+    min-width: 15.9rem;
+  }
+}
+
+@media screen and (min-width: 1316px) {
+  .average-session-charts__container,
+  .performance-charts__container,
+  .today-score-charts__container {
+    width: 16.125rem;
+    height: 16.125rem;
+  }
+
+  .key-data-charts {
+    min-width: 16.125rem;
+  }
 }

@@ -10,7 +10,6 @@ const AverageSession = lazy(() => import("../../components/charts/averageSession
 const Performance = lazy(() => import("../../components/charts/performance/Performance"))
 const TodayScore = lazy(() => import("../../components/charts/todayScore/TodayScore"))
 const KeyData = lazy(() => import("../../components/charts/keyData/KeyData"))
-const Error = lazy(() => import("../../components/error/Error"))
 
 function Dashboard() {
   const { id } = useParams()

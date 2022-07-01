@@ -1,7 +1,6 @@
 .key-card {
   display: flex;
-  width: 16.125rem;
-  height: 7.75rem;
+  padding: 2rem;
   align-items: center;
   justify-content: center;
   background-color: #fbfbfb;

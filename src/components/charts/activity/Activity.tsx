@@ -29,7 +29,7 @@ function Activity({ data }: { data: ActivityData }) {
   return (
     <div className="activity-charts__container">
       <h2 className="activity-charts__title">Activité quotidienne</h2>
-      <ResponsiveContainer className="activity-charts" width="99%" height={320}>
+      <ResponsiveContainer className="activity-charts" width="99%" height={250}>
         <BarChart barSize={7} data={activityData}>
           <CartesianGrid vertical={false} strokeDasharray="2" />
           <XAxis tickMargin={15} dataKey="day" tickLine={false} axisLine={false} />

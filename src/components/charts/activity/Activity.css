@@ -2,7 +2,7 @@
   display: grid;
   padding: 2.5rem 1.5625rem 1.875rem;
   background-color: #fbfbfb;
-  grid-template-areas: 'activity-stack';
+  grid-template-areas: "activity-stack";
 }
 
 .activity-charts__title {
