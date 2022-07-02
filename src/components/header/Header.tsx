@@ -1,6 +1,6 @@
-import Logo from "./logo/Logo";
-import Brand from "./brand/Brand";
-import "./Header.css";
+import Logo from "./logo/Logo"
+import Brand from "./brand/Brand"
+import "./Header.css"
 
 function Header() {
   return (
@@ -16,7 +16,7 @@ function Header() {
         <span className="nav-primary__link">Communauté</span>
       </nav>
     </header>
-  );
+  )
 }
 
-export default Header;
+export default Header

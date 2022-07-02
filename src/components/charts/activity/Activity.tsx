@@ -1,14 +1,18 @@
 import PropTypes from "prop-types"
 import { ResponsiveContainer, BarChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar } from "recharts"
-import type { ActivityDataFormated } from "../../../utilities/formatters"
 import type { TooltipProps } from "recharts"
 import type { ValueType, NameType } from "recharts/src/component/DefaultTooltipContent"
+import type { ActivityDataFormated } from "../../../utilities/formatters"
 import "./Activity.css"
+
+export type ActivityProps = {
+  data: ActivityDataFormated | undefined
+}
 
 /**
  * Component that takes data and renders a bar chart with the data.
  */
-function Activity({ data }: { data: ActivityDataFormated | undefined }) {
+function Activity({ data }: ActivityProps) {
   /**
    * Custom tooltip for recharts component
    */
@@ -22,6 +26,14 @@ function Activity({ data }: { data: ActivityDataFormated | undefined }) {
       )
     }
     return null
+  }
+
+  if (!data || !Array.isArray(data) || data.length === 0) {
+    return (
+      <div className="activity-charts__container">
+        <p className="activity-charts__title">Activité quotidienne non disponible</p>
+      </div>
+    )
   }
 
   return (
@@ -45,15 +57,15 @@ function Activity({ data }: { data: ActivityDataFormated | undefined }) {
 export default Activity
 
 Activity.defaultProps = {
-  data: [],
+  data: undefined,
 }
 
 Activity.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
-      day: PropTypes.string.isRequired,
+      day: PropTypes.number.isRequired,
       kilogram: PropTypes.number.isRequired,
       calories: PropTypes.number.isRequired,
-    }).isRequired
+    }).isRequired,
   ),
 }

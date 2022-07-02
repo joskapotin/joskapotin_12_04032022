@@ -1,3 +1,4 @@
+import PropTypes from "prop-types"
 import KeyCard from "./keyCard/KeyCard"
 import caloriesIcon from "../../../assets/images/calories-icon.svg"
 import carbsIcon from "../../../assets/images/carbs-icon.svg"
@@ -5,7 +6,7 @@ import fatIcon from "../../../assets/images/fat-icon.svg"
 import proteinIcon from "../../../assets/images/protein-icon.svg"
 import "./KeyData.css"
 
-type keyDataProps = {
+export type keyDataProps = {
   data: {
     calorieCount: string
     proteinCount: string
@@ -19,6 +20,7 @@ type keyDataProps = {
  */
 function KeyData({ data }: keyDataProps) {
   const { calorieCount, proteinCount, carbohydrateCount, lipidCount } = data
+
   return (
     <div className="key-data-charts__container">
       <KeyCard icon={caloriesIcon} text={calorieCount} legend="Calories" />
@@ -33,9 +35,18 @@ export default KeyData
 
 KeyData.defaultProps = {
   data: {
-    calorieCount: 0,
-    proteinCount: 0,
-    carbohydrateCount: 0,
-    lipidCount: 0,
+    calorieCount: undefined,
+    proteinCount: undefined,
+    carbohydrateCount: undefined,
+    lipidCount: undefined,
   },
+}
+
+KeyData.propTypes = {
+  data: PropTypes.shape({
+    calorieCount: PropTypes.string,
+    proteinCount: PropTypes.string,
+    carbohydrateCount: PropTypes.string,
+    lipidCount: PropTypes.string,
+  }),
 }

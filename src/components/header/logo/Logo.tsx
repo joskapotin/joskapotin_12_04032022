@@ -1,4 +1,4 @@
-import "./Logo.css";
+import "./Logo.css"
 
 function Logo() {
   return (
@@ -11,15 +11,7 @@ function Logo() {
         d="M40.9174 16.423C43.5556 16.423 45.6942 14.2654 45.6942 11.6039C45.6942 8.94239 43.5556 6.78479 40.9174 6.78479C38.2792 6.78479 36.1406 8.94239 36.1406 11.6039C36.1406 14.2654 38.2792 16.423 40.9174 16.423Z"
         fill="#020203"
       />
-      <mask
-        id="mask0_44_12"
-        style={{ maskType: "alpha" }}
-        maskUnits="userSpaceOnUse"
-        x="0"
-        y="0"
-        width="58"
-        height="58"
-      >
+      <mask id="mask0_44_12" style={{ maskType: "alpha" }} maskUnits="userSpaceOnUse" x="0" y="0" width="58" height="58">
         <path
           d="M28.5982 57.7027C44.3925 57.7027 57.1963 44.7855 57.1963 28.8514C57.1963 12.9172 44.3925 0 28.5982 0C12.8038 0 0 12.9172 0 28.8514C0 44.7855 12.8038 57.7027 28.5982 57.7027Z"
           fill="#FF0101"
@@ -32,7 +24,7 @@ function Logo() {
         />
       </g>
     </svg>
-  );
+  )
 }
 
-export default Logo;
+export default Logo

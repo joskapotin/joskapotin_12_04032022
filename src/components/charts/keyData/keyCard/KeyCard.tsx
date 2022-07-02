@@ -1,7 +1,8 @@
+import PropTypes from "prop-types"
 import "./KeyCard.css"
 
-type KeyCardProps = {
-  text: string
+export type KeyCardProps = {
+  text: string | undefined
   legend: string
   icon: string
 }
@@ -22,3 +23,13 @@ function KeyCard({ text, legend, icon }: KeyCardProps) {
 }
 
 export default KeyCard
+
+KeyCard.defaultProps = {
+  text: "nc",
+}
+
+KeyCard.propTypes = {
+  text: PropTypes.string,
+  legend: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
+}

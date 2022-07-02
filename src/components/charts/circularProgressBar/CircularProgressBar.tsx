@@ -1,7 +1,7 @@
 import PropTypes from "prop-types"
 import "./CircularProgressBar.css"
 
-type CircularProgressBarProps = {
+export type CircularProgressBarProps = {
   sqSize: number
   strokeWidth: number
   percentage: number

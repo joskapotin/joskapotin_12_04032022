@@ -3,10 +3,22 @@ import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, Radar } fro
 import { PerformanceDataFormated } from "../../../utilities/formatters"
 import "./Performance.css"
 
+export type PerformanceProps = {
+  data: PerformanceDataFormated | undefined
+}
+
 /**
  * Component that takes data and renders a radar chart with the data.
  */
-function Performance({ data }: { data: PerformanceDataFormated }) {
+function Performance({ data }: PerformanceProps) {
+  if (!data || !Array.isArray(data) || data.length === 0) {
+    return (
+      <div className="performance-charts__container">
+        <p style={{ textAlign: "center" }}>Activité quotidienne non disponible</p>
+      </div>
+    )
+  }
+
   return (
     <div className="performance-charts__container">
       <ResponsiveContainer className="performance-charts" width="100%" height="100%">
@@ -23,7 +35,7 @@ function Performance({ data }: { data: PerformanceDataFormated }) {
 export default Performance
 
 Performance.defaultProps = {
-  data: [],
+  data: undefined,
 }
 
 Performance.propTypes = {
@@ -31,6 +43,6 @@ Performance.propTypes = {
     PropTypes.shape({
       value: PropTypes.number.isRequired,
       kind: PropTypes.string.isRequired,
-    }).isRequired
+    }).isRequired,
   ),
 }

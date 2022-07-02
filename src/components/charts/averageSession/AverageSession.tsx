@@ -1,16 +1,19 @@
 import PropTypes from "prop-types"
 import { XAxis, YAxis, Tooltip, Line, LineChart, ResponsiveContainer } from "recharts"
-import type { AverageSessionDataFormated } from "../../../utilities/formatters"
 import type { TooltipProps } from "recharts"
 import type { ValueType, NameType } from "recharts/src/component/DefaultTooltipContent"
 import type { CategoricalChartState } from "recharts/types/chart/generateCategoricalChart"
-
+import type { AverageSessionDataFormated } from "../../../utilities/formatters"
 import "./AverageSession.css"
+
+export type AverageSessionProps = {
+  data: AverageSessionDataFormated
+}
 
 /**
  * Component that takes data and renders a line chart with the data.
  */
-function AverageSession({ data }: { data: AverageSessionDataFormated }) {
+function AverageSession({ data }: AverageSessionProps) {
   /**
    * Custom tooltip for recharts component
    */
@@ -36,28 +39,23 @@ function AverageSession({ data }: { data: AverageSessionDataFormated }) {
     }
   }
 
+  if (!data || !Array.isArray(data) || data.length === 0) {
+    return (
+      <div className="average-session-charts__container">
+        <p className="average-session-charts__title">Durée moyenne des sessions non disponible</p>
+      </div>
+    )
+  }
+
   return (
     <div className="average-session-charts__container">
       <h2 className="average-session-charts__title">Durée moyenne des sessions</h2>
       <ResponsiveContainer className="average-session-charts" width="100%" height="100%">
-        <LineChart data={data} margin={{ top: 0, left: 0, right: 0, bottom: 20 }} onMouseMove={e => handleMouseMove(e)}>
-          <XAxis
-            dataKey="day"
-            axisLine={false}
-            tickLine={false}
-            tick={{ fill: "#FFF", opacity: 0.6 }}
-            interval="preserveStartEnd"
-          />
+        <LineChart data={data} margin={{ top: 0, left: 0, right: 0, bottom: 20 }} onMouseMove={handleMouseMove}>
+          <XAxis dataKey="day" axisLine={false} tickLine={false} tick={{ fill: "#FFF", opacity: 0.6 }} interval="preserveStartEnd" />
           <YAxis domain={["dataMin - 20", "dataMax + 20"]} hide />
           <Tooltip content={customTooltip} cursor={false} />
-          <Line
-            type="natural"
-            dataKey="sessionLength"
-            dot={false}
-            activeDot={{ fill: "#FFF" }}
-            strokeWidth={2}
-            stroke="#ff9999"
-          />
+          <Line type="natural" dataKey="sessionLength" dot={false} activeDot={{ fill: "#FFF" }} strokeWidth={2} stroke="#ff9999" />
         </LineChart>
       </ResponsiveContainer>
     </div>
@@ -67,7 +65,7 @@ function AverageSession({ data }: { data: AverageSessionDataFormated }) {
 export default AverageSession
 
 AverageSession.defaultProps = {
-  data: [],
+  data: undefined,
 }
 
 AverageSession.propTypes = {
@@ -75,6 +73,6 @@ AverageSession.propTypes = {
     PropTypes.shape({
       day: PropTypes.string.isRequired,
       sessionLength: PropTypes.number.isRequired,
-    }).isRequired
+    }).isRequired,
   ),
 }

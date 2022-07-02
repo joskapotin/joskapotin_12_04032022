@@ -1,14 +1,18 @@
 import PropTypes from "prop-types"
 
-type ErrorProps = {
+export type ErrorProps = {
+  error: Error
   resetErrorBoundary: (...args: Array<unknown>) => void | undefined
 }
 
-function Error({ resetErrorBoundary }: ErrorProps) {
+function Error({ error, resetErrorBoundary }: ErrorProps) {
   return (
     <main className="App-main">
       <div className="error">
-        There was an error!
+        <p>
+          There was an error! <br />
+          <code>{error.message}</code>
+        </p>
         {resetErrorBoundary && (
           <button type="button" onClick={() => resetErrorBoundary()}>
             Try again
@@ -20,6 +24,10 @@ function Error({ resetErrorBoundary }: ErrorProps) {
 }
 
 export default Error
+
+Error.defaultProps = {
+  resetErrorBoundary: undefined,
+}
 
 Error.propTypes = {
   resetErrorBoundary: PropTypes.func,

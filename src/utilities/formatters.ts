@@ -27,18 +27,26 @@ export type PerformanceDataFormated = {
   kind: string
 }[]
 
+type unitConversionFunction = (number: number) => string
+
+type getDayNumberFunction = (date: string) => number
+
+type getDayFirstLetterFunction = (number: number) => string
+
 type mainFormatterFunction = (data: MainData) => MainDataFormated
 
 type activityFormatterFunction = (data: ActivityData) => ActivityDataFormated
 
 type averageSessionFormatterFunction = (data: AverageSessionData) => AverageSessionDataFormated
 
+type translateTextFunction = (text: string) => string
+
 type performanceFormatterFunction = (data: PerformanceData) => PerformanceDataFormated
 
 /**
- * Given a number, return a string that represents the number in a more human readable format
+ * If the number is greater than or equal to 1000, divide it by 1000 and replace the decimal point with a comma, otherwise return the number as a string.
  */
-const unitConversion = (number: number) => {
+const unitConversion: unitConversionFunction = number => {
   if (number >= 1000) {
     return `${(number / 1000).toString().replace(".", ",")}k`
   }
@@ -46,14 +54,14 @@ const unitConversion = (number: number) => {
 }
 
 /**
- * Give the number of the day from a date formated as yyyy/mm/dd
+ * Given a date string, return the day number of that date.
  */
-export const getDayNumber = (date: string) => new Date(date).getDate()
+export const getDayNumber: getDayNumberFunction = date => new Date(date).getDate()
 
 /**
- * Give the first letter of the day from the number of the day
+ * It takes a number and returns the first letter of the day of the week
  */
-export const getDayFirstLetter = (number: number) => {
+export const getDayFirstLetter: getDayFirstLetterFunction = number => {
   const weekday = ["L", "M", "M", "J", "V", "S", "D"]
   return `${weekday[number - 1]}`
 }
@@ -65,7 +73,7 @@ export const mainFormatter: mainFormatterFunction = ({ data: { userInfos, todayS
   const { firstName } = userInfos
   const { calorieCount, proteinCount, carbohydrateCount, lipidCount } = keyData
   return {
-    firstName: firstName,
+    firstName,
     todayScore: todayScore * 100,
     keyData: {
       calorieCount: `${unitConversion(calorieCount)}Cal`,
@@ -84,8 +92,8 @@ export const activityFormatter: activityFormatterFunction = ({ data: { sessions 
     const { day, kilogram, calories } = session
     return {
       day: getDayNumber(day),
-      kilogram: kilogram,
-      calories: calories,
+      kilogram,
+      calories,
     }
   })
 
@@ -95,13 +103,13 @@ export const activityFormatter: activityFormatterFunction = ({ data: { sessions 
 export const averageSessionFormatter: averageSessionFormatterFunction = ({ data: { sessions } }) =>
   sessions.map(session => {
     const { day, sessionLength } = session
-    return { day: getDayFirstLetter(day), sessionLength: sessionLength }
+    return { day: getDayFirstLetter(day), sessionLength }
   })
 
 /**
  * It takes a string as an argument and returns a translated string
  */
-const translateText = (text: string): string => {
+const translateText: translateTextFunction = text => {
   switch (text) {
     case "cardio":
       return "Cardio"
@@ -128,6 +136,6 @@ export const performanceFormatter: performanceFormatterFunction = ({ data }) => 
 
   return sessions.map(session => {
     const { value, kind } = session
-    return { value: value, kind: translateText(kinds[kind]) }
+    return { value, kind: translateText(kinds[kind]) }
   })
 }

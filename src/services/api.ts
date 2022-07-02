@@ -1,4 +1,4 @@
-type Id = number | string | undefined
+export type Id = string
 
 export type MainData = {
   data: {
@@ -52,13 +52,13 @@ export type PerformanceData = {
   }
 }
 
-type getMainFunction = (id: Id) => Promise<MainData>
+export type getMainFunction = (id: Id) => Promise<MainData>
 
-type getActivityFunction = (id: Id) => Promise<ActivityData>
+export type getActivityFunction = (id: Id) => Promise<ActivityData>
 
-type getPerformanceFunction = (id: Id) => Promise<PerformanceData>
+export type getPerformanceFunction = (id: Id) => Promise<PerformanceData>
 
-type getAverageSessionFunction = (id: Id) => Promise<AverageSessionData>
+export type getAverageSessionFunction = (id: Id) => Promise<AverageSessionData>
 
 /** Mock API */
 const getMain: getMainFunction = async id => fetch(`./mock/userMainDataID${id}.json`).then(res => res.json())
