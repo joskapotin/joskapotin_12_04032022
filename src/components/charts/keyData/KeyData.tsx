@@ -44,9 +44,9 @@ KeyData.defaultProps = {
 
 KeyData.propTypes = {
   data: PropTypes.shape({
-    calorieCount: PropTypes.string,
-    proteinCount: PropTypes.string,
-    carbohydrateCount: PropTypes.string,
-    lipidCount: PropTypes.string,
+    calorieCount: PropTypes.string.isRequired,
+    proteinCount: PropTypes.string.isRequired,
+    carbohydrateCount: PropTypes.string.isRequired,
+    lipidCount: PropTypes.string.isRequired,
   }),
 }

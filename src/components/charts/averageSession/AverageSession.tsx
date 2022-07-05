@@ -7,7 +7,7 @@ import type { AverageSessionDataFormated } from "../../../utilities/formatters"
 import "./AverageSession.css"
 
 export type AverageSessionProps = {
-  data: AverageSessionDataFormated
+  data: AverageSessionDataFormated | undefined
 }
 
 /**
@@ -64,15 +64,11 @@ function AverageSession({ data }: AverageSessionProps) {
 
 export default AverageSession
 
-AverageSession.defaultProps = {
-  data: undefined,
-}
-
 AverageSession.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       day: PropTypes.string.isRequired,
       sessionLength: PropTypes.number.isRequired,
     }).isRequired,
-  ),
+  ).isRequired,
 }

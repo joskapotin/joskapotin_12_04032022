@@ -34,15 +34,11 @@ function Performance({ data }: PerformanceProps) {
 
 export default Performance
 
-Performance.defaultProps = {
-  data: undefined,
-}
-
 Performance.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.number.isRequired,
       kind: PropTypes.string.isRequired,
     }).isRequired,
-  ),
+  ).isRequired,
 }

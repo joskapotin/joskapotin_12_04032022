@@ -56,10 +56,6 @@ function Activity({ data }: ActivityProps) {
 
 export default Activity
 
-Activity.defaultProps = {
-  data: undefined,
-}
-
 Activity.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
@@ -67,5 +63,5 @@ Activity.propTypes = {
       kilogram: PropTypes.number.isRequired,
       calories: PropTypes.number.isRequired,
     }).isRequired,
-  ),
+  ).isRequired,
 }
