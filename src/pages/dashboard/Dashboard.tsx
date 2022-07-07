@@ -7,22 +7,23 @@ import TodayScore from "../../components/charts/todayScore/TodayScore"
 import KeyData from "../../components/charts/keyData/KeyData"
 import api from "../../services/api"
 import { mainFormatter, activityFormatter, averageSessionFormatter, performanceFormatter } from "../../utilities/formatters"
+import type { MainData, ActivityData, AverageSessionData, PerformanceData } from "../../services/api"
 import "./Dashboard.css"
 
 function Dashboard() {
   const { id } = useParams()
 
   /* Data query */
-  const { data: mainData } = id ? useQuery(["mainData", id], () => api.getMain(id)) : { data: undefined }
-  const { data: activityData } = id ? useQuery(["activityData", id], () => api.getActivity(id)) : { data: undefined }
-  const { data: averageSessionData } = id ? useQuery(["averageSessionData", id], () => api.getAverageSession(id)) : { data: undefined }
-  const { data: performanceData } = id ? useQuery(["performanceData", id], () => api.getPerformance(id)) : { data: undefined }
+  const { data: mainData } = useQuery(["mainData", id], () => api.getMain(id as string))
+  const { data: activityData } = useQuery(["activityData", id], () => api.getActivity(id as string))
+  const { data: averageSessionData } = useQuery(["averageSessionData", id], () => api.getAverageSession(id as string))
+  const { data: performanceData } = useQuery(["performanceData", id], () => api.getPerformance(id as string))
 
   /* Data format */
-  const { firstName, todayScore, keyData } = mainData ? mainFormatter(mainData) : { firstName: undefined, todayScore: undefined, keyData: undefined }
-  const activityDataFormatted = activityData ? activityFormatter(activityData) : undefined
-  const averageSessionDataFormatted = averageSessionData ? averageSessionFormatter(averageSessionData) : undefined
-  const performanceDataFormatted = performanceData ? performanceFormatter(performanceData) : undefined
+  const { firstName, todayScore, keyData } = mainFormatter(mainData as MainData)
+  const activityDataFormatted = activityFormatter(activityData as ActivityData)
+  const averageSessionDataFormatted = averageSessionFormatter(averageSessionData as AverageSessionData)
+  const performanceDataFormatted = performanceFormatter(performanceData as PerformanceData)
 
   return (
     <main className="App-main">

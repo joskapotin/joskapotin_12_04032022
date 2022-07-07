@@ -1,7 +1,8 @@
+import type { ReactNode } from "react"
 import PropTypes from "prop-types"
 
 export type ErrorProps = {
-  children: React.ReactNode
+  children: ReactNode
 }
 
 function Error({ children }: ErrorProps) {

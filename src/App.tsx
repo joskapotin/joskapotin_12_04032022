@@ -27,6 +27,7 @@ function App() {
             </ErrorBoundary>
           }
         />
+        <Route path="*" element={<Error>Page not found</Error>} />
       </Routes>
     </div>
   )

@@ -80,9 +80,11 @@ const getPerformance: getPerformanceFunction = async id => fetch(`./mock/userPer
 
 // const getPerformance: getPerformanceFunction = async id => fetch(`${API_URL}/${id}/performance`).then(res => res.json())
 
-export default {
+const api = {
   getMain,
   getActivity,
   getAverageSession,
   getPerformance,
 }
+
+export default api

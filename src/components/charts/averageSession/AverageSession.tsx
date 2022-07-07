@@ -7,7 +7,7 @@ import type { AverageSessionDataFormated } from "../../../utilities/formatters"
 import "./AverageSession.css"
 
 export type AverageSessionProps = {
-  data: AverageSessionDataFormated | undefined
+  data: AverageSessionDataFormated
 }
 
 /**

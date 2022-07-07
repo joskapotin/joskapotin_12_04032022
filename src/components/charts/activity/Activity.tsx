@@ -6,7 +6,7 @@ import type { ActivityDataFormated } from "../../../utilities/formatters"
 import "./Activity.css"
 
 export type ActivityProps = {
-  data: ActivityDataFormated | undefined
+  data: ActivityDataFormated
 }
 
 /**

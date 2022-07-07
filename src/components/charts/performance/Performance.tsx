@@ -4,7 +4,7 @@ import { PerformanceDataFormated } from "../../../utilities/formatters"
 import "./Performance.css"
 
 export type PerformanceProps = {
-  data: PerformanceDataFormated | undefined
+  data: PerformanceDataFormated
 }
 
 /**
