@@ -1,14 +1,13 @@
-import type { ReactNode } from "react"
 import PropTypes from "prop-types"
 
 export type ErrorProps = {
-  children: ReactNode
+  message: string
 }
 
-function Error({ children }: ErrorProps) {
+function Error({ message }: ErrorProps) {
   return (
     <main className="App-main">
-      <div className="error">{children}</div>
+      <div className="error">{message}</div>
     </main>
   )
 }
@@ -16,5 +15,5 @@ function Error({ children }: ErrorProps) {
 export default Error
 
 Error.propTypes = {
-  children: PropTypes.node.isRequired,
+  message: PropTypes.string.isRequired,
 }
