@@ -24,7 +24,7 @@ Plus tard durant la journée, vous recevez un mail de votre Lead Developer, Anto
 >
 > Concernant l’intégration CSS du projet, notre Product Owner préfère qu’on se concentre sur la partie desktop pour l’instant. Tu n’as donc pas besoin de travailler sur la version mobile et tablette du projet. Nous ferons ça dans un second temps. Cela dit, fais bien attention à ce que ton projet puisse être lisible sur les écrans d’au moins 1024 par 780 pixels.
 >
-> Concernant les données, je t’ai créé un [backend utilisant NodeJS que tu peux trouver ici](./server/). Il va te permettre de réaliser tes calls HTTP et de récupérer des données d’exemple. Tout y est décrit : les étapes d’installation ainsi que les calls HTTP que j’ai mis en place.
+> Concernant les données, je t’ai créé un [backend utilisant NodeJS que tu peux trouver ici](https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboard). Il va te permettre de réaliser tes calls HTTP et de récupérer des données d’exemple. Tout y est décrit : les étapes d’installation ainsi que les calls HTTP que j’ai mis en place.
 >
 > Pour la gestion des calls en eux-mêmes, je t’invite à utiliser soit [Fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), soit [Axios](https://github.com/axios/axios). Par contre, il est important que tu réalises les calls en dehors des composants React. Il faudra que tu crées un service à part qui se chargera de faire les calls pour toi.
 >
