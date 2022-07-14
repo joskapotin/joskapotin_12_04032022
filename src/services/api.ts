@@ -1,3 +1,5 @@
+import axios from "axios"
+
 export type Id = string
 
 export type MainData = {
@@ -61,24 +63,17 @@ export type getPerformanceFunction = (id: Id) => Promise<PerformanceData>
 export type getAverageSessionFunction = (id: Id) => Promise<AverageSessionData>
 
 /** Mock API */
-const getMain: getMainFunction = async id => fetch(`./mock/userMainDataID${id}.json`).then(res => res.json())
-
-const getActivity: getActivityFunction = async id => fetch(`./mock/userActivityID${id}.json`).then(res => res.json())
-
-const getAverageSession: getAverageSessionFunction = async id => fetch(`./mock/userAverageSessionID${id}.json`).then(res => res.json())
-
-const getPerformance: getPerformanceFunction = async id => fetch(`./mock/userPerformanceID${id}.json`).then(res => res.json())
+const getMain: getMainFunction = async id => axios.get(`/mock/userMainDataID${id}.json`).then(res => res.data)
+const getActivity: getActivityFunction = async id => axios.get(`/mock/userActivityID${id}.json`).then(res => res.data)
+const getAverageSession: getAverageSessionFunction = async id => axios.get(`/mock/userAverageSessionID${id}.json`).then(res => res.data)
+const getPerformance: getPerformanceFunction = async id => axios.get(`/mock/userPerformanceID${id}.json`).then(res => res.data)
 
 /** Real API */
 // const API_URL = "http://localhost:3000/user"
-
-// const getMain: getMainFunction = async id => fetch(`${API_URL}/${id}`).then(res => res.json())
-
-// const getActivity: getActivityFunction = async id => fetch(`${API_URL}/${id}/activity`).then(res => res.json())
-
-// const getAverageSession: getAverageSessionFunction = async id => fetch(`${API_URL}/${id}/average-sessions`).then(res => res.json())
-
-// const getPerformance: getPerformanceFunction = async id => fetch(`${API_URL}/${id}/performance`).then(res => res.json())
+// const getMain: getMainFunction = async id => axios.get(`${API_URL}/${id}`).then(res => res.data)
+// const getActivity: getActivityFunction = async id => axios.get(`${API_URL}/${id}/activity`).then(res => res.data)
+// const getAverageSession: getAverageSessionFunction = async id => axios.get(`${API_URL}/${id}/average-sessions`).then(res => res.data)
+// const getPerformance: getPerformanceFunction = async id => axios.get(`${API_URL}/${id}/performance`).then(res => res.data)
 
 const api = {
   getMain,

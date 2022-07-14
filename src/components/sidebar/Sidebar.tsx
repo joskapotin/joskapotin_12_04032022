@@ -10,6 +10,7 @@ function Sidebar() {
     <aside className="App-sidebar">
       <Link to="/user/12"> user 12</Link>
       <Link to="/user/18"> user 18</Link>
+      <Link to="/user/error"> error</Link>
       <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect width="64" height="64" rx="6" fill="white" />
         <path
