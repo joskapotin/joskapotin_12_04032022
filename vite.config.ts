@@ -4,6 +4,6 @@ import tsconfigPaths from "vite-tsconfig-paths"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "./",
+  base: "/joskapotin_12_04032022/",
   plugins: [react(), tsconfigPaths()],
 })

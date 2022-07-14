@@ -2,6 +2,7 @@
   "name": "joskapotin_12_04032022",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://joskapotin.github.io/joskapotin_12_04032022",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -12,8 +13,7 @@
     "prettier": "npx prettier src --check",
     "prettier:fix": "npm run prettier -- --write",
     "format": "npm run prettier:fix && npm run lint:fix",
-    "typedoc": "typedoc --options typedoc.json",
-    "jsdocs": "jsdoc -c jsdoc.json -d jsdocs -r"
+    "typedoc": "typedoc --options typedoc.json"
   },
   "dependencies": {
     "react": "^18.0.0",
