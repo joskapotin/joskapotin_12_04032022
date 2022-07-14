@@ -63,10 +63,10 @@ export type getPerformanceFunction = (id: Id) => Promise<PerformanceData>
 export type getAverageSessionFunction = (id: Id) => Promise<AverageSessionData>
 
 /** Mock API */
-const getMain: getMainFunction = async id => axios.get(`/mock/userMainDataID${id}.json`).then(res => res.data)
-const getActivity: getActivityFunction = async id => axios.get(`/mock/userActivityID${id}.json`).then(res => res.data)
-const getAverageSession: getAverageSessionFunction = async id => axios.get(`/mock/userAverageSessionID${id}.json`).then(res => res.data)
-const getPerformance: getPerformanceFunction = async id => axios.get(`/mock/userPerformanceID${id}.json`).then(res => res.data)
+const getMain: getMainFunction = async id => axios.get(`./mock/userMainDataID${id}.json`).then(res => res.data)
+const getActivity: getActivityFunction = async id => axios.get(`./mock/userActivityID${id}.json`).then(res => res.data)
+const getAverageSession: getAverageSessionFunction = async id => axios.get(`./mock/userAverageSessionID${id}.json`).then(res => res.data)
+const getPerformance: getPerformanceFunction = async id => axios.get(`./mock/userPerformanceID${id}.json`).then(res => res.data)
 
 /** Real API */
 // const API_URL = "http://localhost:3000/user"
