@@ -1,5 +1,8 @@
 import "./Logo.css"
 
+/**
+ * Logo component
+ */
 function Logo() {
   return (
     <svg className="App-logo" viewBox="0 0 58 58" fill="none" xmlns="http://www.w3.org/2000/svg">

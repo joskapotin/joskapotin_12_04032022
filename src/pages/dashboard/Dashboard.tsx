@@ -10,6 +10,11 @@ import { mainFormatter, activityFormatter, averageSessionFormatter, performanceF
 import type { MainData, ActivityData, AverageSessionData, PerformanceData } from "../../services/api"
 import "./Dashboard.css"
 
+/**
+ * Dashboard page
+ * We use the `useParams` hook to get the `id` from the URL, then we use the `useQuery` hook to fetch
+ * the data from the API, then we format the data, and finally we render the data
+ */
 function Dashboard() {
   const { id } = useParams()
 

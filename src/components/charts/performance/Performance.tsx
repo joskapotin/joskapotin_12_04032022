@@ -11,6 +11,7 @@ export type PerformanceProps = {
  * Component that takes data and renders a radar chart with the data.
  */
 function Performance({ data }: PerformanceProps) {
+  /* Checking if the data is empty or not. If it is empty, it will return a message saying that the data is not available. */
   if (!data || !Array.isArray(data) || data.length === 0) {
     return (
       <div className="performance-charts__container">

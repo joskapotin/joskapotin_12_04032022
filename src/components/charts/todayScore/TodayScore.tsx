@@ -10,6 +10,7 @@ export type TodayScoreProps = {
  * It takes data and render a circular progress bar with the data.
  */
 function TodayScore({ data }: TodayScoreProps) {
+  /* Checking if the data is empty or not. If it is empty, it will return a message saying that the data is not available. */
   if (!data) {
     return (
       <div className="today-score-charts__container">

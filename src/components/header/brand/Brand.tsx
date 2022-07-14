@@ -1,5 +1,8 @@
 import "./Brand.css"
 
+/**
+ * Brand component
+ */
 function Brand() {
   return (
     <svg className="App-logo" viewBox="0 0 110 25" fill="none" xmlns="http://www.w3.org/2000/svg">

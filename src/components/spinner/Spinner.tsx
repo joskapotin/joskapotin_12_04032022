@@ -1,5 +1,8 @@
 import "./Spinner.css"
 
+/**
+ * Spinner component
+ */
 function Spinner() {
   return (
     <div className="overlay">

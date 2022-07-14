@@ -12,26 +12,24 @@ import "./App.css"
 const Dashboard = lazy(() => import("./pages/dashboard/Dashboard"))
 const NotFound = lazy(() => import("./pages/notFound/NotFound"))
 
+/**
+ * Main entry point of the application.
+ */
 function App() {
   return (
     <div className="App">
       <Header />
       <Sidebar />
       <main className="App-main">
-        <Routes>
-          <Route
-            path={ROUTES.DASHBOARD}
-            element={
-              <ErrorBoundary fallbackRender={({ error }) => <Error message={error.message} />}>
-                {/* A React component that catches JavaScript errors anywhere in its child component tree, logs those errors, and displays a fallback UI instead of the component tree that crashed. */}
-                <Suspense fallback={<Spinner />}>
-                  <Dashboard />
-                </Suspense>
-              </ErrorBoundary>
-            }
-          />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <ErrorBoundary fallbackRender={({ error }) => <Error message={error.message} />}>
+          {/* A React component that catches JavaScript errors anywhere in its child component tree, logs those errors, and displays a fallback UI instead of the component tree that crashed. */}
+          <Suspense fallback={<Spinner />}>
+            <Routes>
+              <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </ErrorBoundary>
       </main>
     </div>
   )

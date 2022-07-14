@@ -2,6 +2,9 @@ import Logo from "./logo/Logo"
 import Brand from "./brand/Brand"
 import "./Header.css"
 
+/**
+ * Header component
+ */
 function Header() {
   return (
     <header className="App-header">

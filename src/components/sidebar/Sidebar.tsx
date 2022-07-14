@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
 import "./Sidebar.css"
 
+/**
+ * Sidebar component
+ */
 function Sidebar() {
   const year = new Date().getFullYear()
   return (

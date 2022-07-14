@@ -28,6 +28,9 @@ function AverageSession({ data }: AverageSessionProps) {
     return null
   }
 
+  /**
+   * If the mouse is hovering over the chart, then change the background color of the chart to a gradient that is red on the left and fades to a darker red on the right
+   */
   const handleMouseMove = (e: CategoricalChartState) => {
     if (e.isTooltipActive === true) {
       const div = document.querySelector(".average-session-charts") as HTMLElement
@@ -39,6 +42,7 @@ function AverageSession({ data }: AverageSessionProps) {
     }
   }
 
+  /* Checking if the data is empty or not. If it is empty, it will return a message saying that the data is not available. */
   if (!data || !Array.isArray(data) || data.length === 0) {
     return (
       <div className="average-session-charts__container">

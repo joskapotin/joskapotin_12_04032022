@@ -28,6 +28,7 @@ function Activity({ data }: ActivityProps) {
     return null
   }
 
+  /* Checking if the data is empty or not. If it is empty, it will return a message saying that the data is not available. */
   if (!data || !Array.isArray(data) || data.length === 0) {
     return (
       <div className="activity-charts__container">
