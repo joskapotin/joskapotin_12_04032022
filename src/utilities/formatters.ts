@@ -59,7 +59,7 @@ const unitConversion: unitConversionFunction = number => {
 export const getDayNumber: getDayNumberFunction = date => new Date(date).getDate()
 
 /**
- * It takes a number and returns the first letter of the day of the week
+ * Given a number, returns the first letter of the day of the week
  */
 export const getDayFirstLetter: getDayFirstLetterFunction = number => {
   const weekday = ["L", "M", "M", "J", "V", "S", "D"]

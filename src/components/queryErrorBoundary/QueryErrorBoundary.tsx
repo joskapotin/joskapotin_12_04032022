@@ -9,6 +9,11 @@ export type QueryErrorBoundaryProps = {
   children: ReactNode
 }
 
+/**
+ * A component that wraps the children of a component in a `QueryErrorResetBoundary`
+ * With the `onReset` function, it will reset the query when the error is resolved
+ * Any error that occurs inside the childrens will be caught and rendered in the `ErrorBoundary`
+ */
 function QueryErrorBoundary({ children }: QueryErrorBoundaryProps) {
   return (
     <QueryErrorResetBoundary>
